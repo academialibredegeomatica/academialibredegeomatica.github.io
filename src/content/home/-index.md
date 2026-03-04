@@ -1,7 +1,7 @@
 ---
 image: "@assets/astrogon-star.svg"
 imageAlt: Astrogon logo
-title: Astrogon
+title: Academia Libre de Geomática
 content: A rapidly-customizable template for a blog, documentation, and more.
 button:
   label: See the Code
