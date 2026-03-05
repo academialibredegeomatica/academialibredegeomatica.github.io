@@ -160,3 +160,27 @@ footer svg,
 .social-links a {
   color: #ffffff !important;
 }
+/* 1. VOLVER EL TEXTO JANE DOE INVISIBLE (NEGRO) */
+footer span, 
+footer p, 
+footer a[href="/terms"], 
+.copyright {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* 2. RESCATAR LOS ICONOS (BLANCO PURO Y BRILLANTE) */
+footer .social-links a, 
+footer .social-links svg, 
+footer i, 
+[class*="social"] a {
+  color: #ffffff !important;   /* Blanco total */
+  opacity: 1 !important;       /* Sin transparencia */
+  filter: none !important;     /* Sin filtros grises */
+}
+
+/* 3. EFECTO EXTRA: QUE BRILLE EL ICONO AL PASAR EL MOUSE */
+footer .social-links a:hover {
+  color: #f6921e !important;   /* Naranja de tu logo */
+  transform: scale(1.1);
+}
