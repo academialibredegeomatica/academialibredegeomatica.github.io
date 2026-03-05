@@ -17,71 +17,78 @@
   @include meta.load-css("utilities");
 }
 
-/* 1. FONDO NEGRO ABSOLUTO */
-html, body, #page-wrapper {
+/* 1. LIMPIEZA RADICAL DE CAPAS (Adiós a la clonación) */
+/* Esto elimina cualquier imagen que la plantilla intente poner por debajo o por encima */
+*, *::before, *::after {
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-shadow: 0 0 #0000 !important;
+}
+
+html, body, #page-wrapper, .bg-surface-200, [class*="bg-glass"] {
+  background-image: none !important;
   background-color: #000000 !important;
+}
+
+/* Matamos específicamente el pseudo-elemento que crea el marco doble */
+[class*="hero"]::before, [class*="hero"]::after, 
+.bg-glass::before, .bg-glass::after,
+section::before, section::after {
+  display: none !important;
+  content: none !important;
   background-image: none !important;
 }
 
-html::before, body::before, .bg-glass::before {
-  display: none !important;
-  content: none !important;
-}
-
-/* 2. LA TIERRA (VENTANA ESPACIAL) */
+/* 2. LA TIERRA (Única y centrada) */
 .hero, section.section, main#main-content {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  min-height: 600px !important; 
-  width: 95% !important;
-  max-width: 1200px !important;
+  min-height: 550px !important; 
+  width: 90% !important;
+  max-width: 1100px !important;
   margin: 40px auto !important;
-  border-radius: 20px !important;
+  border-radius: 15px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
 }
 
-/* 3. LIMPIEZA DE CAPAS CLONADAS */
-.container, .hero-content, div[class*="glass"] {
+/* 3. TRANSPARENCIA TOTAL PARA EL TEXTO */
+.container, .hero-content, [class*="glass"] {
+  background: transparent !important;
   background-image: none !important;
-  background-color: transparent !important;
   border: none !important;
+  box-shadow: none !important;
 }
 
-/* 4. TEXTOS EN BLANCO */
-h1, h2, h3, p, span {
-  color: #ffffff !important;
-}
-
-/* 5. EL BOTÓN DIGITAL (COLOR LOGOTIPO) */
-/* Pequeño, discreto pero con el fondo naranja sólido */
-#main-content a.btn, 
-.hero a.btn, 
-.btn-primary, 
-.hero-content a {
-  display: inline-block !important;
-  background-color: #f6921e !important; /* NARANJA SÓLIDO DEL LOGO */
+/* 4. EL BOTÓN (NARANJA LOGOTIPO - DIGITAL) */
+/* Usamos el color exacto del logo #f6921e */
+a.btn, .btn, #main-content .btn, .btn-primary {
+  background-color: #f6921e !important; /* NARANJA SÓLIDO */
   color: #ffffff !important;           /* TEXTO BLANCO */
-  border: 1px solid #ffffff !important; /* BORDE FINO BLANCO */
-  padding: 6px 18px !important;        /* TAMAÑO DISCRETO */
-  border-radius: 4px !important;       /* FORMA DIGITAL RECTANGULAR */
-  font-size: 0.8rem !important;
+  padding: 8px 22px !important;        /* Tamaño discreto */
+  border-radius: 4px !important;       /* Estilo digital */
+  font-size: 0.85rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
-  text-decoration: none !important;
-  margin-top: 25px !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
-  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  border: 1px solid #ffffff !important; 
+  margin-top: 20px !important;
+  transition: transform 0.2s ease !important;
 }
 
-/* Efecto al pasar el mouse */
-#main-content a.btn:hover {
-  background-color: #ffffff !important; /* CAMBIA A BLANCO */
-  color: #f6921e !important;           /* TEXTO NARANJA */
-  transform: scale(1.05);
+a.btn:hover {
+  transform: scale(1.05) !important;
+  background-color: #ffffff !important;
+  color: #f6921e !important;
 }
+
+/* 5. TEXTOS BLANCOS */
+h1, h2, h3, p, span { color: #ffffff !important; }
