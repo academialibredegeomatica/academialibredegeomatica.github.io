@@ -17,59 +17,54 @@
   @include meta.load-css("utilities");
 }
 
-/* --- A PARTIR DE AQUÍ PEGAS EL CÓDIGO NUEVO --- */
+/* ============================================================
+   PERSONALIZACIÓN ACADEMIA LIBRE DE GEOMÁTICA
+   ============================================================ */
 
-/* 1. Anulamos el bosque inyectado por la plantilla y ponemos fondo blanco */
-html::before, html::after, body::before, body::after {
+/* 1. Fondo negro total y eliminación definitiva del bosque */
+html, body, #page-wrapper, .bg-surface-200, [class*="bg-"] {
+  background-image: none !important;
+  background-color: #000000 !important;
+}
+
+/* Anulamos cualquier capa fantasma de la plantilla */
+html::before, html::after, body::before, body::after, .bg-glass::before {
   content: none !important;
   display: none !important;
   background-image: none !important;
 }
 
-html, body {
-  background-image: none !important;
-  background-color: #000000 !important;
-}
-
-/* 2. Forzamos la visualización de la caja de la Tierra */
-.hero, section.section, main#main-content {
+/* 2. Configuración de la ÚNICA imagen de la Tierra */
+/* Esto elimina el efecto de imagen doble o clonada */
+.hero, section[class*="hero"], .page-hero {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  min-height: 500px !important; 
-  width: 95% !important;
-  max-width: 1200px !important;
-  margin: 40px auto !important;
-  border-radius: 20px !important;
-  display: block !important;
-  position: relative !important;
-  z-index: 10 !important; 
-}
-/* 3. Cambiamos todos los textos principales a blanco */
-h1, h2, h3, p, span, .hero-content {
-  color: #ffffff !important;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important; /* Sombra para que se lea aún mejor */
-}
-
-/* Ajuste específico para el título de la Academia */
-.hero h1, .hero p {
-  color: #ffffff !important;
-}
-
-/* Opcional: Si el botón de "Explorar" se ve oscuro, lo aclaramos */
-.btn, button {
-  border-color: #ffffff !important;
-  color: #ffffff !important;
-}
-/* 4. Estilo para el botón de Explorar */
-.btn, .hero .btn, button[class*="btn"] {
-  background-color: #f6921e !important; /* El naranja de tu logo */
-  color: #000000 !important;           /* Letras negras para que contrasten */
+  min-height: 75vh !important; /* Altura de la imagen */
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
   border: none !important;
-  font-weight: bold !important;
-  padding: 12px 24px !important;
-  border-radius: 50px !important;      /* Forma redondeada y elegante */
-  transition: transform 0.3s ease !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
+/* Anulamos la imagen en la capa interna para que no se duplique */
+div[class*="hero-content"], .container {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+/* 3. Textos en blanco para máxima legibilidad */
+h1, h2, h3, h4, p, span, li, a {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+}
+
+/* Ajuste para que los enlaces del menú también se vean */
+nav a, .menu a {
+  color: #ffffff !important;
+}
