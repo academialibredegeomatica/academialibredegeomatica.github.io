@@ -144,3 +144,19 @@ footer p,
   color: #000000 !important; /* Negro absoluto */
   transition: none !important;
 }
+/* OSCURECIMIENTO TOTAL DEL PIE DE PÁGINA (SOLO TEXTO) */
+footer *, 
+[class*="copyright"], 
+.footer-text, 
+#copyright {
+  color: #000000 !important;
+  text-shadow: none !important; /* Quita sombras que puedan delatarlo */
+}
+
+/* EXCEPCIÓN: MANTENER LOS ICONOS BLANCOS */
+footer a, 
+footer i, 
+footer svg, 
+.social-links a {
+  color: #ffffff !important;
+}
