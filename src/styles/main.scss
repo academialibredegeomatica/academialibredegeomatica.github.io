@@ -46,3 +46,19 @@ html, body {
   position: relative !important;
   z-index: 10 !important; 
 }
+/* 3. Cambiamos todos los textos principales a blanco */
+h1, h2, h3, p, span, .hero-content {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important; /* Sombra para que se lea aún mejor */
+}
+
+/* Ajuste específico para el título de la Academia */
+.hero h1, .hero p {
+  color: #ffffff !important;
+}
+
+/* Opcional: Si el botón de "Explorar" se ve oscuro, lo aclaramos */
+.btn, button {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
