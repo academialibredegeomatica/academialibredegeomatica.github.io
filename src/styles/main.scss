@@ -63,7 +63,7 @@ h1, h2, h3, p, span { color: #ffffff !important; }
 
 /* 5. BOTÓN DIGITAL CON COLORES DEL LOGO (DISCRETO) */
 /* Forzamos el naranja sólido del logo para que NO sea invisible */
-a.btn, .btn, .btn-primary, [class*="btn"] {
+a.btn, .btn, .btn-primary, [class*="btn"], #main-content .btn {
   display: block !important;
   width: fit-content !important;
   background-color: #f6921e !important; /* NARANJA DEL LOGO */
