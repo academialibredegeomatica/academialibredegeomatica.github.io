@@ -18,74 +18,96 @@
 }
 
 /* ============================================================
-   SOLUCIÓN RADICAL: ACADEMIA LIBRE DE GEOMÁTICA
+   SOLUCIÓN NUCLEAR: ELIMINACIÓN DE FILTROS Y CAPAS
    ============================================================ */
 
-/* 1. FONDO NEGRO Y ELIMINACIÓN DE CLONACIÓN */
+/* 1. APAGÓN GENERAL DE FONDOS */
 html, body, #page-wrapper, .bg-surface-200 {
   background-color: #000000 !important;
   background-image: none !important;
 }
 
-/* Matamos cualquier rastro de la imagen vieja o bordes fantasmas */
-html::before, body::before, .bg-glass::before, [class*="hero"]::before {
-  display: none !important;
-  content: none !important;
-}
-
-/* 2. LA TIERRA (UNA SOLA CAPA LIMPIA) */
-.hero, section.section, main#main-content {
+/* 2. LA TIERRA (LIMPIA Y SIN OBSTÁCULOS) */
+/* Aplicamos la imagen al contenedor principal */
+main#main-content, .hero, section.section {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  min-height: 600px !important; 
+  min-height: 600px !important;
   width: 95% !important;
-  max-width: 1100px !important;
+  max-width: 1200px !important;
   margin: 40px auto !important;
-  border-radius: 15px !important;
+  border-radius: 20px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  
+  /* Flexbox para centrar todo */
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
-/* 3. TRANSPARENCIA PARA EL TEXTO (EVITA LA DOBLE IMAGEN) */
-.container, .hero-content, [class*="glass"] {
+/* 3. ¡LA CLAVE! ELIMINAR EL CUADRO INTERNO "FANTASMA" */
+/* Esta regla hace transparente a CUALQUIER caja dentro de la hero */
+.hero div, 
+section div, 
+.container, 
+.hero-content, 
+[class*="glass"] {
   background: transparent !important;
   background-image: none !important;
-  border: none !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important; /* QUITA EL BORROSO */
   box-shadow: none !important;
+  border: none !important;
 }
 
-/* 4. TEXTOS EN BLANCO */
-h1, h2, h3, p, span { color: #ffffff !important; }
+/* 4. LIMPIEZA DE PSEUDO-ELEMENTOS (SOMBREADOS EXTRAÑOS) */
+*:before, *:after {
+  box-shadow: none !important;
+  background-image: none !important;
+}
 
-/* 5. BOTÓN DIGITAL CON COLORES DEL LOGO (DISCRETO) */
-/* Forzamos el naranja sólido del logo para que NO sea invisible */
-a.btn, .btn, .btn-primary, [class*="btn"], #main-content .btn {
-  display: block !important;
-  width: fit-content !important;
-  background-color: #f6921e !important; /* NARANJA DEL LOGO */
-  color: #ffffff !important;           /* TEXTO BLANCO */
-  border: 1px solid #ffffff !important; /* BORDE FINO BLANCO */
-  padding: 8px 24px !important;        /* TAMAÑO DISCRETO */
-  border-radius: 4px !important;       /* ESTILO DIGITAL */
+/* 5. EL BOTÓN (RESCATE TOTAL) */
+/* Usamos z-index alto para sacarlo del fondo oscuro */
+#main-content a.btn, 
+.hero a, 
+a[href], 
+button.btn {
+  /* FORZAMOS VISIBILIDAD */
+  position: relative !important;
+  z-index: 999 !important; /* Lo pone encima de todo */
+  display: inline-block !important;
+  
+  /* ESTILO VISUAL */
+  background-color: #f6921e !important; /* NARANJA LOGO */
+  background-image: none !important;    /* Quita gradientes oscuros */
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+  
+  /* TAMAÑO Y FORMA */
+  padding: 8px 24px !important;
+  border-radius: 4px !important;
   font-size: 0.85rem !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
   text-transform: uppercase !important;
   letter-spacing: 2px !important;
   text-decoration: none !important;
-  margin: 25px auto 0 !important;      /* CENTRADO BAJO EL TEXTO */
-  opacity: 1 !important;
-  visibility: visible !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
-  transition: transform 0.2s ease !important;
+  
+  /* QUITAR EFECTOS DAÑINOS */
+  backdrop-filter: none !important;
+  filter: none !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5) !important;
+  
+  margin-top: 30px !important;
 }
 
-/* Efecto al tocarlo */
-a.btn:hover, .btn:hover {
-  transform: scale(1.05) !important;
-  background-color: #ffffff !important;
-  color: #f6921e !important;
+/* 6. TEXTOS (BLANCO PURO) */
+h1, h2, h3, p, span {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,1) !important;
+  z-index: 10 !important;
+  position: relative !important;
 }
