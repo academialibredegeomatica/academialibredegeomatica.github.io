@@ -17,22 +17,18 @@
   @include meta.load-css("utilities");
 }
 
-/* ============================================================
-   CONFIGURACIÓN FINAL: ACADEMIA LIBRE DE GEOMÁTICA
-   ============================================================ */
-
-/* 1. Fondo negro y eliminación de rastro del bosque */
-html, body, #page-wrapper, .bg-surface-200 {
-  background-image: none !important;
+/* 1. FONDO NEGRO Y ELIMINACIÓN DE BOSQUE */
+html, body, #page-wrapper {
   background-color: #000000 !important;
+  background-image: none !important;
 }
 
 html::before, body::before, .bg-glass::before {
-  content: none !important;
   display: none !important;
+  content: none !important;
 }
 
-/* 2. La Tierra como ventana principal */
+/* 2. LA TIERRA (UNA SOLA CAPA) */
 .hero, section.section, main#main-content {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
@@ -47,46 +43,47 @@ html::before, body::before, .bg-glass::before {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  position: relative !important;
 }
 
-/* 3. Limpieza de clonación (sin borrar el botón) */
+/* 3. LIMPIEZA DE CLONACIÓN (EXCEPTO EL BOTÓN) */
+/* Esta regla quita fondos a los cuadros pero no toca al botón */
 .container, .hero-content, div[class*="glass"] {
   background-image: none !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  backdrop-filter: none !important;
 }
 
-/* 4. Textos en blanco radiante */
+/* 4. TEXTOS EN BLANCO */
 h1, h2, h3, p, span {
   color: #ffffff !important;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8) !important;
 }
 
 /* 5. EL BOTÓN DIGITAL (NARANJA LOGO) */
-/* Forzamos visibilidad con selectores de ID y clase */
-#main-content .btn, .hero .btn, a.btn, .btn-primary {
+/* He cambiado el selector para que sea el más fuerte de todos */
+#main-content a.btn, 
+.hero a.btn, 
+.btn-primary, 
+.hero-content a {
   display: inline-block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
   background-color: transparent !important;
-  color: #f6921e !important;           /* NARANJA LOGOTIPO */
-  border: 1.5px solid #f6921e !important; /* Borde fino digital */
-  padding: 8px 20px !important;        /* Tamaño discreto */
-  border-radius: 4px !important;       /* Estética técnica */
-  font-size: 0.85rem !important;
+  color: #f6921e !important; /* NARANJA LOGO */
+  border: 1px solid #f6921e !important; /* BORDE FINO DIGITAL */
+  padding: 6px 16px !important; /* PEQUEÑO Y DISCRETO */
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  margin-top: 20px !important;
-  transition: all 0.3s ease !important;
+  letter-spacing: 2px !important;
+  text-decoration: none !important;
+  margin-top: 25px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* Efecto al pasar el mouse */
-#main-content .btn:hover, .hero .btn:hover {
+/* Efecto al tocarlo */
+#main-content a.btn:hover {
   background-color: #f6921e !important;
   color: #000000 !important;
-  box-shadow: 0 0 15px rgba(246, 146, 30, 0.6) !important;
+  box-shadow: 0 0 10px rgba(246, 146, 30, 0.5) !important;
 }
