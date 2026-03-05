@@ -66,3 +66,25 @@ h1, h2, h3, p, span, .text-center {
   color: #ffffff !important;
   text-shadow: 0 4px 8px rgba(0,0,0,0.9) !important;
 }
+/* 5. Recuperar y resaltar el borde del botón */
+.btn, 
+button[class*="btn"], 
+a[class*="btn"],
+#main-content .btn {
+  border: 2px solid #ffffff !important; /* Borde blanco grueso */
+  background-color: rgba(255, 255, 255, 0.1) !important; /* Fondo semi-transparente */
+  color: #ffffff !important;
+  padding: 10px 25px !important;
+  border-radius: 8px !important;
+  font-weight: bold !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Efecto al pasar el mouse */
+.btn:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  transform: scale(1.05);
+}
