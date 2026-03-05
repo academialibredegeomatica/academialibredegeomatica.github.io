@@ -18,7 +18,7 @@
 }
 
 /* Fondo general de la página (Color sólido) */
-body {
+html, body {
   background-image: none !important; /* Quitamos el bosque */
   background-color: #0b0d17 !important; /* Un azul muy oscuro casi negro */
 }
