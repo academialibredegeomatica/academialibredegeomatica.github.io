@@ -18,10 +18,10 @@
 }
 
 /* ============================================================
-   ESTILO DEFINITIVO: ACADEMIA LIBRE DE GEOMÁTICA
+   CONFIGURACIÓN FINAL: ACADEMIA LIBRE DE GEOMÁTICA
    ============================================================ */
 
-/* 1. Fondo negro y limpieza de capas del bosque */
+/* 1. Fondo negro y eliminación de rastro del bosque */
 html, body, #page-wrapper, .bg-surface-200 {
   background-image: none !important;
   background-color: #000000 !important;
@@ -32,26 +32,26 @@ html::before, body::before, .bg-glass::before {
   display: none !important;
 }
 
-/* 2. La Tierra: Ventana única al espacio */
+/* 2. La Tierra como ventana principal */
 .hero, section.section, main#main-content {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  min-height: 650px !important; 
+  min-height: 600px !important; 
   width: 95% !important;
   max-width: 1200px !important;
   margin: 40px auto !important;
   border-radius: 20px !important;
   display: flex !important;
+  flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   position: relative !important;
-  overflow: hidden !important;
 }
 
-/* 3. Eliminación de cuadros clonados internos */
-.container, .hero-content, div[class*="glass"], section > div {
+/* 3. Limpieza de clonación (sin borrar el botón) */
+.container, .hero-content, div[class*="glass"] {
   background-image: none !important;
   background-color: transparent !important;
   border: none !important;
@@ -65,24 +65,28 @@ h1, h2, h3, p, span {
   text-shadow: 0 2px 8px rgba(0,0,0,0.8) !important;
 }
 
-/* 5. BOTÓN DIGITAL DISCRETO (ESTILO MINIMALISTA) */
-#main-content .btn, .hero .btn, .btn-primary {
-  background-color: transparent !important; /* Fondo vacío */
-  color: #f6921e !important;           /* Texto naranja del logo */
-  border: 1px solid #f6921e !important; /* Borde fino naranja */
-  padding: 8px 20px !important;        /* Más pequeño y discreto */
-  border-radius: 4px !important;       /* Menos redondeado, más rectilíneo */
-  font-size: 0.85rem !important;       /* Letra más pequeña */
-  font-weight: 600 !important;
+/* 5. EL BOTÓN DIGITAL (NARANJA LOGO) */
+/* Forzamos visibilidad con selectores de ID y clase */
+#main-content .btn, .hero .btn, a.btn, .btn-primary {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: transparent !important;
+  color: #f6921e !important;           /* NARANJA LOGOTIPO */
+  border: 1.5px solid #f6921e !important; /* Borde fino digital */
+  padding: 8px 20px !important;        /* Tamaño discreto */
+  border-radius: 4px !important;       /* Estética técnica */
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 1.5px !important;
-  transition: all 0.4s ease !important;
-  box-shadow: none !important;
+  letter-spacing: 1px !important;
+  margin-top: 20px !important;
+  transition: all 0.3s ease !important;
 }
 
-/* Efecto Hover Digital */
+/* Efecto al pasar el mouse */
 #main-content .btn:hover, .hero .btn:hover {
-  background-color: #f6921e !important; /* Se llena de naranja */
-  color: #000000 !important;           /* Texto negro al tocar */
-  box-shadow: 0 0 15px rgba(246, 146, 30, 0.5) !important; /* Brillo neón */
+  background-color: #f6921e !important;
+  color: #000000 !important;
+  box-shadow: 0 0 15px rgba(246, 146, 30, 0.6) !important;
 }
