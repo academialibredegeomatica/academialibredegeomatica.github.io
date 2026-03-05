@@ -73,9 +73,3 @@ h1, h2, h3, p, span, .hero-content {
   transition: transform 0.3s ease !important;
 }
 
-/* Efecto al pasar el mouse por encima */
-.btn:hover {
-  transform: scale(1.05) !important;   /* Crece un poquito */
-  background-color: #ffffff !important; /* Se vuelve blanco al tocarlo */
-  color: #000000 !important;
-}
