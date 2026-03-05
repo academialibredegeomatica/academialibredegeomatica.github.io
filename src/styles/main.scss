@@ -17,23 +17,19 @@
   @include meta.load-css("utilities");
 }
 
-/* ============================================================
-   SOLUCIÓN FINAL: UNA SOLA TIERRA Y FONDO NEGRO
-   ============================================================ */
-
-/* 1. Fondo negro absoluto y adiós al bosque */
+/* 1. LIMPIEZA TOTAL DEL FONDO */
 html, body, #page-wrapper, .bg-surface-200 {
   background-image: none !important;
   background-color: #000000 !important;
 }
 
-/* Matamos cualquier rastro de la imagen vieja en las capas base */
-html::before, body::before, .bg-glass::before {
-  content: none !important;
+/* Matamos el bosque y cualquier pseudo-elemento */
+html::before, body::before, .bg-glass::before, [class*="bg-"]::before {
   display: none !important;
+  content: none !important;
 }
 
-/* 2. La Tierra como imagen PRINCIPAL y ÚNICA */
+/* 2. LA TIERRA COMO ÚNICA IMAGEN REAL */
 .hero, section.section, main#main-content {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
@@ -51,20 +47,21 @@ html::before, body::before, .bg-glass::before {
   overflow: hidden !important;
 }
 
-/* 3. ¡AQUÍ MATAMOS EL CLON! */
-/* Forzamos a que el contenedor del texto NO tenga imagen ni bordes extra */
+/* 3. ELIMINACIÓN RADICAL DE LA CLONACIÓN */
+/* Esta regla busca CUALQUIER etiqueta dentro de la Tierra y le quita el fondo */
+.hero *, 
+section.section *, 
 .container, 
 .hero-content, 
-div[class*="glass"], 
-section > div {
+[class*="glass"] {
   background-image: none !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  backdrop-filter: none !important; /* Quita el efecto borroso si existiera */
+  backdrop-filter: none !important;
 }
 
-/* 4. Textos en blanco radiante */
+/* 4. TEXTOS EN BLANCO */
 h1, h2, h3, p, span, .text-center {
   color: #ffffff !important;
   text-shadow: 0 4px 8px rgba(0,0,0,0.9) !important;
