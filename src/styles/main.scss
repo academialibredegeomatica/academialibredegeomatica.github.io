@@ -17,54 +17,36 @@
   @include meta.load-css("utilities");
 }
 
-/* ============================================================
-   PERSONALIZACIÓN ACADEMIA LIBRE DE GEOMÁTICA
-   ============================================================ */
-
-/* 1. Fondo negro total y eliminación definitiva del bosque */
+/* 1. FONDO NEGRO Y LIMPIEZA DE CAPAS */
 html, body, #page-wrapper, .bg-surface-200, [class*="bg-"] {
   background-image: none !important;
   background-color: #000000 !important;
 }
 
-/* Anulamos cualquier capa fantasma de la plantilla */
-html::before, html::after, body::before, body::after, .bg-glass::before {
+html::before, body::before, .bg-glass::before {
   content: none !important;
   display: none !important;
-  background-image: none !important;
 }
 
-/* 2. Configuración de la ÚNICA imagen de la Tierra */
-/* Esto elimina el efecto de imagen doble o clonada */
-.hero, section[class*="hero"], .page-hero {
+/* 2. REAPARICIÓN DE LA TIERRA (Caja única) */
+/* Usamos selectores más fuertes para que no desaparezca */
+main#main-content, .hero, section.section {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  min-height: 75vh !important; /* Altura de la imagen */
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  min-height: 600px !important; /* Altura para que se vea bien */
+  width: 90% !important;
+  max-width: 1200px !important;
+  margin: 40px auto !important;
+  border-radius: 24px !important;
+  display: block !important;
 }
 
-/* Anulamos la imagen en la capa interna para que no se duplique */
-div[class*="hero-content"], .container {
-  background-image: none !important;
-  background-color: transparent !important;
-}
-
-/* 3. Textos en blanco para máxima legibilidad */
-h1, h2, h3, h4, p, span, li, a {
+/* 3. TEXTOS EN BLANCO */
+h1, h2, h3, p, span, .text-center {
   color: #ffffff !important;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important;
 }
 
-/* Ajuste para que los enlaces del menú también se vean */
-nav a, .menu a {
-  color: #ffffff !important;
-}
+/* El botón de Explorar se mantiene con el estilo original de la plantilla */
