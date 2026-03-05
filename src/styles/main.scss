@@ -17,29 +17,32 @@
   @include meta.load-css("utilities");
 }
 
-/* 1. LIMPIEZA TOTAL DEL FONDO */
+/* ============================================================
+   ESTILO DEFINITIVO: ACADEMIA LIBRE DE GEOMÁTICA
+   ============================================================ */
+
+/* 1. Fondo negro y limpieza de capas del bosque */
 html, body, #page-wrapper, .bg-surface-200 {
   background-image: none !important;
   background-color: #000000 !important;
 }
 
-/* Matamos el bosque y cualquier pseudo-elemento */
-html::before, body::before, .bg-glass::before, [class*="bg-"]::before {
-  display: none !important;
+html::before, body::before, .bg-glass::before {
   content: none !important;
+  display: none !important;
 }
 
-/* 2. LA TIERRA COMO ÚNICA IMAGEN REAL */
+/* 2. La Tierra: Ventana única al espacio */
 .hero, section.section, main#main-content {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  min-height: 700px !important; 
+  min-height: 650px !important; 
   width: 95% !important;
   max-width: 1200px !important;
   margin: 40px auto !important;
-  border-radius: 28px !important;
+  border-radius: 20px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -47,13 +50,8 @@ html::before, body::before, .bg-glass::before, [class*="bg-"]::before {
   overflow: hidden !important;
 }
 
-/* 3. ELIMINACIÓN RADICAL DE LA CLONACIÓN */
-/* Esta regla busca CUALQUIER etiqueta dentro de la Tierra y le quita el fondo */
-.hero *, 
-section.section *, 
-.container, 
-.hero-content, 
-[class*="glass"] {
+/* 3. Eliminación de cuadros clonados internos */
+.container, .hero-content, div[class*="glass"], section > div {
   background-image: none !important;
   background-color: transparent !important;
   border: none !important;
@@ -61,57 +59,30 @@ section.section *,
   backdrop-filter: none !important;
 }
 
-/* 4. TEXTOS EN BLANCO */
-h1, h2, h3, p, span, .text-center {
+/* 4. Textos en blanco radiante */
+h1, h2, h3, p, span {
   color: #ffffff !important;
-  text-shadow: 0 4px 8px rgba(0,0,0,0.9) !important;
-}
-/* 5. Recuperar y resaltar el borde del botón */
-.btn, 
-button[class*="btn"], 
-a[class*="btn"],
-#main-content .btn {
-  border: 2px solid #ffffff !important; /* Borde blanco grueso */
-  background-color: rgba(255, 255, 255, 0.1) !important; /* Fondo semi-transparente */
-  color: #ffffff !important;
-  padding: 10px 25px !important;
-  border-radius: 8px !important;
-  font-weight: bold !important;
-  display: inline-block !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8) !important;
 }
 
-/* Efecto al pasar el mouse */
-.btn:hover {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  transform: scale(1.05);
-}
-/* 5. BOTÓN EXPLORAR - ESTILO ACADEMIA (NARANJA Y BLANCO) */
-/* Usamos selectores ultra-específicos para forzar el cambio */
-#main-content .btn, 
-.hero .btn, 
-a[href*="academia"], 
-.btn-primary {
-  background-color: #f6921e !important; /* El naranja de tu logo */
-  color: #ffffff !important;           /* Texto blanco para que resalte */
-  border: 2px solid #ffffff !important; /* Borde blanco como pediste */
-  padding: 14px 32px !important;
-  border-radius: 50px !important;      /* Forma redondeada moderna */
-  font-weight: 800 !important;
+/* 5. BOTÓN DIGITAL DISCRETO (ESTILO MINIMALISTA) */
+#main-content .btn, .hero .btn, .btn-primary {
+  background-color: transparent !important; /* Fondo vacío */
+  color: #f6921e !important;           /* Texto naranja del logo */
+  border: 1px solid #f6921e !important; /* Borde fino naranja */
+  padding: 8px 20px !important;        /* Más pequeño y discreto */
+  border-radius: 4px !important;       /* Menos redondeado, más rectilíneo */
+  font-size: 0.85rem !important;       /* Letra más pequeña */
+  font-weight: 600 !important;
   text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  display: inline-block !important;
-  box-shadow: 0 4px 15px rgba(246, 146, 30, 0.4) !important; /* Brillo naranja sutil */
-  transition: all 0.3s ease !important;
+  letter-spacing: 1.5px !important;
+  transition: all 0.4s ease !important;
+  box-shadow: none !important;
 }
 
-/* Efecto al pasar el mouse (Hover) */
-#main-content .btn:hover, 
-.hero .btn:hover {
-  background-color: #ffffff !important; /* Cambia a blanco */
-  color: #f6921e !important;           /* Texto naranja */
-  transform: translateY(-3px) scale(1.05) !important; /* Se eleva un poco */
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3) !important;
+/* Efecto Hover Digital */
+#main-content .btn:hover, .hero .btn:hover {
+  background-color: #f6921e !important; /* Se llena de naranja */
+  color: #000000 !important;           /* Texto negro al tocar */
+  box-shadow: 0 0 15px rgba(246, 146, 30, 0.5) !important; /* Brillo neón */
 }
