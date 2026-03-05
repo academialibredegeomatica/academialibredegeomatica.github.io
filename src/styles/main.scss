@@ -88,3 +88,30 @@ a[class*="btn"],
   color: #000000 !important;
   transform: scale(1.05);
 }
+/* 5. BOTÓN EXPLORAR - ESTILO ACADEMIA (NARANJA Y BLANCO) */
+/* Usamos selectores ultra-específicos para forzar el cambio */
+#main-content .btn, 
+.hero .btn, 
+a[href*="academia"], 
+.btn-primary {
+  background-color: #f6921e !important; /* El naranja de tu logo */
+  color: #ffffff !important;           /* Texto blanco para que resalte */
+  border: 2px solid #ffffff !important; /* Borde blanco como pediste */
+  padding: 14px 32px !important;
+  border-radius: 50px !important;      /* Forma redondeada moderna */
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  display: inline-block !important;
+  box-shadow: 0 4px 15px rgba(246, 146, 30, 0.4) !important; /* Brillo naranja sutil */
+  transition: all 0.3s ease !important;
+}
+
+/* Efecto al pasar el mouse (Hover) */
+#main-content .btn:hover, 
+.hero .btn:hover {
+  background-color: #ffffff !important; /* Cambia a blanco */
+  color: #f6921e !important;           /* Texto naranja */
+  transform: translateY(-3px) scale(1.05) !important; /* Se eleva un poco */
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3) !important;
+}
