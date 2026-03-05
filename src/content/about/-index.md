@@ -1,5 +1,5 @@
 ---
-title: Hey, I'm Jane Doe!
+title: Nosotros
 description: this is meta description
 image: "@assets/profile/jane-doe.jpg"
 draft: false
