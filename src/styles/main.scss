@@ -17,7 +17,7 @@
   @include meta.load-css("utilities");
 }
 
-/* 1. FONDO NEGRO Y ELIMINACIÓN DE BOSQUE */
+/* 1. FONDO NEGRO ABSOLUTO */
 html, body, #page-wrapper {
   background-color: #000000 !important;
   background-image: none !important;
@@ -28,7 +28,7 @@ html::before, body::before, .bg-glass::before {
   content: none !important;
 }
 
-/* 2. LA TIERRA (UNA SOLA CAPA) */
+/* 2. LA TIERRA (VENTANA ESPACIAL) */
 .hero, section.section, main#main-content {
   background-image: url('/peakpx.jpg') !important;
   background-size: cover !important;
@@ -45,13 +45,11 @@ html::before, body::before, .bg-glass::before {
   justify-content: center !important;
 }
 
-/* 3. LIMPIEZA DE CLONACIÓN (EXCEPTO EL BOTÓN) */
-/* Esta regla quita fondos a los cuadros pero no toca al botón */
+/* 3. LIMPIEZA DE CAPAS CLONADAS */
 .container, .hero-content, div[class*="glass"] {
   background-image: none !important;
   background-color: transparent !important;
   border: none !important;
-  box-shadow: none !important;
 }
 
 /* 4. TEXTOS EN BLANCO */
@@ -59,31 +57,31 @@ h1, h2, h3, p, span {
   color: #ffffff !important;
 }
 
-/* 5. EL BOTÓN DIGITAL (NARANJA LOGO) */
-/* He cambiado el selector para que sea el más fuerte de todos */
+/* 5. EL BOTÓN DIGITAL (COLOR LOGOTIPO) */
+/* Pequeño, discreto pero con el fondo naranja sólido */
 #main-content a.btn, 
 .hero a.btn, 
 .btn-primary, 
 .hero-content a {
   display: inline-block !important;
-  background-color: transparent !important;
-  color: #f6921e !important; /* NARANJA LOGO */
-  border: 1px solid #f6921e !important; /* BORDE FINO DIGITAL */
-  padding: 6px 16px !important; /* PEQUEÑO Y DISCRETO */
-  border-radius: 4px !important;
+  background-color: #f6921e !important; /* NARANJA SÓLIDO DEL LOGO */
+  color: #ffffff !important;           /* TEXTO BLANCO */
+  border: 1px solid #ffffff !important; /* BORDE FINO BLANCO */
+  padding: 6px 18px !important;        /* TAMAÑO DISCRETO */
+  border-radius: 4px !important;       /* FORMA DIGITAL RECTANGULAR */
   font-size: 0.8rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 2px !important;
+  letter-spacing: 1px !important;
   text-decoration: none !important;
   margin-top: 25px !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+  transition: all 0.3s ease !important;
 }
 
-/* Efecto al tocarlo */
+/* Efecto al pasar el mouse */
 #main-content a.btn:hover {
-  background-color: #f6921e !important;
-  color: #000000 !important;
-  box-shadow: 0 0 10px rgba(246, 146, 30, 0.5) !important;
+  background-color: #ffffff !important; /* CAMBIA A BLANCO */
+  color: #f6921e !important;           /* TEXTO NARANJA */
+  transform: scale(1.05);
 }
