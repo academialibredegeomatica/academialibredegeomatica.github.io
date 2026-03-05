@@ -22,7 +22,7 @@
    ============================================================ */
 
 /* 1. FONDO NEGRO Y LIMPIEZA DE CAPAS */
-html, body, #page-wrapper {
+html, body, #page-wrapper, .bg-surface-200 {
   background-color: #000000 !important;
   background-image: none !important;
 }
@@ -61,10 +61,9 @@ html::before, body::before, .bg-glass::before, [class*="hero"]::before {
   backdrop-filter: none !important;
 }
 
-/* 4. AJUSTE DE TEXTOS (TAMAÑO AUMENTADO) */
+/* 4. AJUSTE DE TEXTOS (TAMAÑOS Y COLORES) */
 h1, .hero-title, h2 {
   color: #ffffff !important;
-  /* Aumentamos el tamaño aquí */
   font-size: 3.5rem !important; 
   font-weight: 800 !important;
   line-height: 1.2 !important;
@@ -73,32 +72,73 @@ h1, .hero-title, h2 {
   max-width: 900px !important;
 }
 
+/* DESCRIPCIÓN: TAMAÑO AUMENTADO */
 p, span, h3 {
   color: #ffffff !important;
-  font-size: 1.2rem !important;
+  font-size: 1.35rem !important; /* Aumentado desde 1.2rem */
+  line-height: 1.5 !important;
   text-shadow: 0 2px 8px rgba(0,0,0,0.8) !important;
+  margin-bottom: 30px !important;
 }
 
-/* 5. EL BOTÓN DIGITAL (NARANJA LOGOTIPO) */
-#main-content .btn, .hero .btn, a.btn, .btn-primary {
+/* 5. NAVEGACIÓN SUPERIOR: COLOR BLANCO Y TAMAÑO AUMENTADO */
+/* Usamos selectores genéricos para los enlaces del menú de arriba */
+.navbar a, 
+.header a, 
+.nav-links a {
+  color: #ffffff !important;           /* Texto blanco */
+  font-size: 1.15rem !important;      /* Un poco más grande */
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease !important;
+  padding: 0 10px !important;
+}
+
+/* Hover de Navegación: Naranja Logo */
+.navbar a:hover, 
+.header a:hover, 
+.nav-links a:hover {
+  color: #f6921e !important;           /* Naranja del logo */
+}
+
+/* 6. BOTÓN DIGITAL (ESTILO LOGOTIPO: NARANJA Y BLANCO) */
+/* Blindamos el formato solo para este botón */
+#main-content .btn, 
+.hero .btn, 
+a.btn, 
+.btn-primary, 
+[href*="academia"] {
   display: inline-block !important;
-  background-color: #f6921e !important; /* NARANJA LOGO */
-  color: #ffffff !important;           /* TEXTO BLANCO */
-  border: 1px solid #ffffff !important; 
-  padding: 10px 24px !important;       /* Tamaño discreto */
-  border-radius: 4px !important;       /* Estética técnica */
-  font-size: 0.9rem !important;
-  font-weight: 700 !important;
+  
+  /* FONDO: Degradado Naranja del Logo */
+  background: linear-gradient(135deg, #fbb03b 0%, #f6921e 100%) !important;
+  
+  /* TEXTO: Blanco */
+  color: #ffffff !important;           
+  
+  /* BORDE: Sutil Blanco */
+  border: 2px solid #ffffff !important; 
+  
+  /* TAMAÑO Y FORMA */
+  padding: 12px 30px !important;       
+  border-radius: 6px !important;       
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
   text-transform: uppercase !important;
   letter-spacing: 2px !important;
   text-decoration: none !important;
+  
+  /* POSICIÓN Y SOMBRA */
   margin-top: 30px !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+  box-shadow: 0 4px 15px rgba(246, 146, 30, 0.4) !important;
   transition: all 0.3s ease !important;
 }
 
+/* Hover de Botón: Fondo Blanco, Texto Naranja */
 #main-content .btn:hover {
-  background-color: #ffffff !important;
-  color: #f6921e !important;
-  transform: translateY(-2px) !important;
+  background: #ffffff !important;      /* Fondo blanco */
+  color: #f6921e !important;           /* Texto naranja */
+  border-color: #f6921e !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3) !important;
 }
