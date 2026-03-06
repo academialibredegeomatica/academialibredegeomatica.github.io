@@ -1,5 +1,5 @@
 ---
-title: "Fundamentos GIS"
+title: "."
 description: "Descripción del curso"
 image: "@assets/docs/characters/1fundamentos.png"
 imageAlt: "Imagen de fundamentos"
