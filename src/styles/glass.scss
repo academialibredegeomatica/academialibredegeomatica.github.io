@@ -23,75 +23,28 @@
   @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
 }
 
-// Gradient
 .gradient {
   @apply from-transparent via-transparent to-transparent;
-  // @apply from-txt-s via-transparent to-transparent;
-  // @apply dark:from-darkmode-txt-s dark:via-transparent dark:to-transparent;
 }
-// Ocultar el contenedor si no tiene contenido hijo visible
-.glass, .glass-t {
-  &:empty {
-    display: none;
-  }
-  
-  // En caso de que Astro renderice un contenedor con espacios en blanco
-  // esto asegura que si no hay texto real, el bloque se oculte.
-  & h3:empty, & span:empty {
-    display: none;
-  }
-}
-/* Regla de fuerza bruta para ocultar contenedores vacíos debajo de la imagen */
-.card-content, .card-info, [class*="footer"], [class*="content"] {
-  &:has(h3:empty), &:has(h2:empty), &:empty {
-    display: none !important;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    border: none;
-  }
-}
-/* Esto eliminará el área de texto de todas las tarjetas de cursos */
+
+/* --- SOLUCIÓN PARA OCULTAR EL CUADRO DE TEXTO --- */
+
+// 1. Ocultamos el contenedor de texto de la tarjeta
 .index-card-text-container, 
 .card-content, 
-[class*="card-title"], 
-[class*="card-footer"] {
+.card-footer,
+[class*="index-card-footer"] {
     display: none !important;
-    visibility: hidden;
-    height: 0;
+    height: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
-}
-/* Eliminación total del área de texto en las tarjetas */
-.card-text, 
-.card-body, 
-.index-card-footer,
-header.card-header + div { 
-  display: none !important;
-  max-height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  border: none !important;
+    border: none !important;
+    visibility: hidden !important;
 }
 
-/* Si el contenedor usa el efecto glass, lo forzamos a reducirse */
+// 2. Si el texto está dentro de un elemento glass independiente, lo ocultamos
 .glass-t, .glass {
-  &:not(:has(img)) { // Si el elemento glass no tiene la imagen, se oculta
+  &:not(:has(img)) { 
      display: none !important;
   }
-}
----
-title: "."
-description: Character creation information
-image: "@assets/docs/characters/1fundamentos.png"
-/* Oculta el texto de las tarjetas de forma segura */
-.index-card-text-container {
-    display: none !important;
-}
-
-/* Si el anterior no funciona, este es el nombre general */
-[class*="card"] h3, [class*="card"] .glass-t {
-    display: none !important;
 }
