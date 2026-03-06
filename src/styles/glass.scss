@@ -86,3 +86,12 @@ header.card-header + div {
 title: "."
 description: Character creation information
 image: "@assets/docs/characters/1fundamentos.png"
+/* Oculta el texto de las tarjetas de forma segura */
+.index-card-text-container {
+    display: none !important;
+}
+
+/* Si el anterior no funciona, este es el nombre general */
+[class*="card"] h3, [class*="card"] .glass-t {
+    display: none !important;
+}
