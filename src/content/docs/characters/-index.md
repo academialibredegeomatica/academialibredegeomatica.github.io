@@ -1,6 +1,6 @@
 ---
 title: "."
-description: "Descripción del curso"
+description: " "
 image: "@assets/docs/characters/1fundamentos.png"
 imageAlt: "Imagen de fundamentos"
 ---
