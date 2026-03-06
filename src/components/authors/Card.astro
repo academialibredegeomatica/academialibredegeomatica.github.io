@@ -1,6 +1,11 @@
 ---
 import { Image } from "astro:assets";
-const { entry } = Astro.props;
+
+interface Props {
+  entry: any;
+}
+
+const { entry }: Props = Astro.props;
 const { title, image, imageAlt } = entry.data;
 ---
 
@@ -20,6 +25,6 @@ const { title, image, imageAlt } = entry.data;
         </a>
       )
     }
-    {/* Se han eliminado los contenedores 'glass' y los títulos 'h4' */}
+    {/* El título y los párrafos han sido eliminados para que no aparezca el 'glass' flotante */}
   </div>
 </div>
