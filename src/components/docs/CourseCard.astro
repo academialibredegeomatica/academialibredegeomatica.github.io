@@ -3,57 +3,53 @@ import { Image } from "astro:assets";
 
 const { entry } = Astro.props;
 
-// EXTRACCIÓN DIRECTA (Sin depender del esquema de Astro)
 const title = entry.data?.title || "Sin título";
 const image = entry.data?.image;
+const empresa = entry.data?.empresa || "CAEG";
+const tipo = entry.data?.tipo || "Curso corto";
 const botonTexto = entry.data?.botonTexto || "ACCESO";
 
-// Forzamos la lectura de empresa y tipo buscando cualquier variante de nombre
-const empresa = entry.data?.empresa || entry.data?.Empresa || "CAEG";
-const tipo = entry.data?.tipo || entry.data?.["tipo de curso"] || "Curso corto";
-
-// Esto aparecerá en tu terminal para confirmar qué está llegando
-console.log(`>>> FICHA: ${title} | Empresa: ${empresa} | Tipo: ${tipo}`);
+// Depuración para tu tranquilidad
+console.log(`>>> FICHA OK: ${title}`);
 ---
 
-<div class="h-full m-2 bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl transition-all duration-300 hover:border-blue-500/50 group">
+<div class="h-full m-2 bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl group">
   
   <div class="relative aspect-video bg-black overflow-hidden">
-    {image && (
+    {image && typeof image !== 'string' ? (
       <Image
         class="object-cover w-full h-full opacity-80 group-hover:scale-105 transition-transform duration-500"
         src={image}
-        alt={title}
+        alt={title} 
         width={1280}
         height={720}
       />
+    ) : (
+      /* Si la imagen falla o es un string/SVG, usamos una etiqueta img normal para que no dé error */
+      image && <img src={image} alt={title} class="object-cover w-full h-full opacity-80" />
     )}
     
-    <div class="absolute top-3 right-3 z-10">
-      <span class="bg-yellow-400 text-black text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-xl border border-yellow-500">
+    <div class="absolute top-2 right-2 z-10">
+      <span class="bg-[#facc15] text-black text-[9px] font-black px-3 py-1 rounded-full uppercase shadow-xl">
         {tipo}
       </span>
     </div>
   </div>
 
-  <div class="p-5 flex flex-col flex-grow bg-gradient-to-b from-slate-900 to-[#0f172a]">
-    <h3 class="text-white font-bold text-lg mb-4 leading-tight group-hover:text-blue-400 transition-colors">
+  <div class="p-5 flex flex-col flex-grow">
+    <h3 class="text-white font-bold text-sm mb-4 leading-tight">
       {title}
     </h3>
 
-    <div class="mb-5 flex flex-col border-l-4 border-blue-600 bg-blue-600/10 p-3 rounded-r-lg">
-      <span class="text-[9px] text-blue-400 font-black uppercase tracking-widest mb-1">Certifica:</span>
-      <span class="text-white text-sm font-bold">{empresa}</span>
+    <div class="mb-5 flex flex-col border-l-4 border-blue-600 bg-blue-900/30 p-3 rounded-r-lg">
+      <span class="text-[8px] text-blue-400 font-black uppercase tracking-widest mb-1 text-center">Certifica:</span>
+      <span class="text-white text-sm font-bold text-center">{empresa}</span>
     </div>
 
     <div class="mt-auto">
-      <div class="w-full text-center bg-blue-600 text-white text-xs font-black py-3 rounded-xl border-b-4 border-blue-800 shadow-lg transition-transform active:scale-95">
+      <div class="w-full text-center bg-[#2563eb] text-white text-xs font-bold py-3 rounded-xl shadow-lg">
         {botonTexto}
       </div>
     </div>
   </div>
 </div>
-
-<style>
-  .h-full { min-height: 440px; }
-</style>
