@@ -14,7 +14,7 @@ const { collectionIndex, entries } = Astro.props;
 
 // Detectamos si estamos en la raíz (viendo las 10 categorías) 
 // o dentro de una categoría (viendo los cursos)
-const isMainGallery = collectionIndex.id === "docs/-index";
+const isMainGallery = collectionIndex.id === "docs/-index" || collectionIndex.id === "docs/-index.md";
 ---
 
 <BaseLayout
