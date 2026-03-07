@@ -1,15 +1,20 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
 import DocCard from "@components/docs/Card.astro";
+import CourseCard from "@components/docs/CourseCard.astro"; // Importamos el nuevo molde
 import PageHeader from "@components/common/PageHeader.astro";
 import type { DocsEntry } from "@/types";
 
 interface Props {
   collectionIndex: DocsEntry;
-  entries: DocsEntry[]; // this could either be the set of entries in a doc group, or the set of indices of the doc groups
+  entries: DocsEntry[];
 }
 
 const { collectionIndex, entries } = Astro.props;
+
+// Detectamos si estamos en la raíz (viendo las 10 categorías) 
+// o dentro de una categoría (viendo los cursos)
+const isMainGallery = collectionIndex.id === "docs/-index";
 ---
 
 <BaseLayout
@@ -24,7 +29,13 @@ const { collectionIndex, entries } = Astro.props;
         {
           entries.map((entry) => (
             <div class="md:col-6 lg:col-4 h-min p-2">
-              <DocCard entry={entry} />
+              {isMainGallery ? (
+                /* Si es la galería principal, usa el diseño limpio */
+                <DocCard entry={entry} />
+              ) : (
+                /* Si estamos dentro de una categoría, usa la ficha con botón ACCESO */
+                <CourseCard entry={entry} />
+              )}
             </div>
           ))
         }

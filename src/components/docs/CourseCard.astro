@@ -1,0 +1,57 @@
+---
+import type { DocsEntry } from "@/types";
+import { Image } from "astro:assets";
+
+interface Props {
+  entry: DocsEntry;
+}
+
+const { entry } = Astro.props;
+// Extraemos los datos del archivo .md
+const { title, image, imageAlt, empresa, tipo, enlace, botonTexto } = entry.data;
+---
+
+<div class="h-full m-2 bg-slate-900/60 border border-white/10 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 group shadow-lg">
+  <div class="flex flex-col h-full">
+    <div class="relative aspect-video overflow-hidden">
+      {image && (
+        <Image
+          class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+          src={image}
+          alt={imageAlt || title}
+          width={1280}
+          height={720}
+        />
+      )}
+      {tipo && (
+        <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-extrabold px-2 py-1 rounded uppercase tracking-tighter shadow-md">
+          {tipo}
+        </span>
+      )}
+    </div>
+
+    <div class="p-5 flex flex-col flex-grow justify-between">
+      <div>
+        <h3 class="text-lg font-bold text-white leading-tight mb-2 group-hover:text-blue-400 transition-colors">
+          {title}
+        </h3>
+        {empresa && (
+          <p class="text-gray-400 text-xs flex items-center gap-1">
+            <span class="opacity-70">Empresa:</span> 
+            <span class="text-blue-200 font-medium">{empresa}</span>
+          </p>
+        )}
+      </div>
+
+      <div class="mt-5">
+        <a 
+          href={enlace || "#"} 
+          target="_blank"
+          class="block w-full text-center bg-blue-700 hover:bg-blue-600 text-white text-xs font-black py-3 rounded-lg transition-all transform active:scale-95 border-b-4 border-blue-900 hover:border-blue-800"
+        >
+          {botonTexto || "ACCESO"}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
