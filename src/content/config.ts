@@ -20,4 +20,7 @@ const docs = defineCollection({
                                                 }),
                                                 });
 
-                                                export const collections = { 'docs': docs, 'indexCards': indexCards };
+                                                export const collections = { 
+  'docs': docs, 
+  'index-cards': indexCards // <--- ¡Le agregamos el guion aquí!
+};
