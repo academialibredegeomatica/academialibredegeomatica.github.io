@@ -1,18 +1,46 @@
-{
-  entries.map((entry) => {
-    // Esta es la prueba definitiva: 
-    // Si el ID termina en "/-index", es una CATEGORÍA (Caja limpia).
-    // Si NO termina en "/-index", es un CURSO (Ficha con botón).
-    const isCategory = entry.id.endsWith("/-index");
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import DocCard from "@components/docs/Card.astro";
+import CourseCard from "@components/docs/CourseCard.astro";
+import PageHeader from "@components/common/PageHeader.astro";
+import type { DocsEntry } from "@/types";
 
-    return (
-      <div class="md:col-6 lg:col-4 h-min p-2">
-        {isCategory ? (
-          <DocCard entry={entry} />
-        ) : (
-          <CourseCard entry={entry} />
-        )}
-      </div>
-    );
-  })
+interface Props {
+  collectionIndex: DocsEntry;
+  entries: DocsEntry[];
 }
+
+// ESTA LÍNEA ES LA QUE FALTA O ESTÁ MAL:
+const { collectionIndex, entries } = Astro.props;
+---
+
+<BaseLayout
+  title={collectionIndex.data.title}
+  image={collectionIndex.data.image?.src}
+  description={collectionIndex.data.description}
+>
+  <PageHeader title={collectionIndex.data.title} />
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        {
+          entries.map((entry) => {
+            // Lógica para separar Categoría de Curso
+            // Si el archivo es "-index", es una categoría principal (Caja limpia)
+            const isCategory = entry.id.includes("-index");
+
+            return (
+              <div class="md:col-6 lg:col-4 h-min p-2">
+                {isCategory ? (
+                  <DocCard entry={entry} />
+                ) : (
+                  <CourseCard entry={entry} />
+                )}
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
