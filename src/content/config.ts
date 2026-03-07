@@ -1,20 +1,20 @@
 import { defineCollection, z } from 'astro:content';
 
-// Colección para los Cursos
+// Colección para los Cursos (Carpeta content/docs)
 const docs = defineCollection({
-  schema: ({ image }) => z.object({
+  schema: () => z.object({
     title: z.string(),
-    empresa: z.string().default("CAEG"),
-    tipo: z.string().default("Curso corto"),
-    botonTexto: z.string().default("ACCESO"),
-    image: z.any().optional(), // Cambiado a 'any' para evitar bloqueos
+    empresa: z.string().optional(),
+    tipo: z.string().optional(),
+    botonTexto: z.string().optional(),
+    image: z.any().optional(), // Acepta cualquier formato de imagen sin quejarse
     weight: z.number().optional(),
   }),
 });
 
-// Colección para la Página de Inicio
+// Colección para la Página de Inicio (Carpeta content/indexCards)
 const indexCards = defineCollection({
-  schema: ({ image }) => z.object({
+  schema: () => z.object({
     title: z.string(),
     description: z.string().optional(),
     image: z.any().optional(),
