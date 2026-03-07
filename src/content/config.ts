@@ -5,7 +5,7 @@ const docs = defineCollection({
     title: z.string(),
     empresa: z.string().default("CAEG"),
     tipo: z.string().default("Curso"),
-    image: z.string().optional(), // Definido como string para evitar validaciones de assets
+    image: z.string().optional(), 
     botonTexto: z.string().default("ACCESO"),
     weight: z.number().default(99),
   }),
