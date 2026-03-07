@@ -1,6 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 
-// Colección para los Cursos (Carpeta /content/docs/)
+// Colección para los Cursos
 const docs = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
@@ -12,8 +12,7 @@ const docs = defineCollection({
   }),
 });
 
-// Colección para la Página de Inicio (Carpeta /content/indexCards/)
-// ESTO ES LO QUE FALTABA Y CAUSABA EL ERROR DE "indexCards does not exist"
+// Colección para la Página de Inicio
 const indexCards = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),

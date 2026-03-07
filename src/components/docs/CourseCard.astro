@@ -1,14 +1,14 @@
 ---
 const { entry } = Astro.props;
 
-// Extracción segura de datos
+// Extracción ultra-segura de datos
 const title = entry.data?.title || "Sin título";
 const image = entry.data?.image;
 const empresa = entry.data?.empresa || "CAEG";
 const tipo = entry.data?.tipo || "Curso corto";
 const botonTexto = entry.data?.botonTexto || "ACCESO";
 
-// Preparar la ruta de la imagen (manejando si es objeto o string)
+// Procesamos la imagen para obtener la ruta correcta (sea objeto o texto)
 const imageSrc = image ? (typeof image === 'object' ? image.src : image) : null;
 ---
 
@@ -53,7 +53,6 @@ const imageSrc = image ? (typeof image === 'object' ? image.src : image) : null;
 </div>
 
 <style>
-  /* Altura mínima para que todas las tarjetas se vean parejas */
   .h-full {
     min-height: 420px;
   }
