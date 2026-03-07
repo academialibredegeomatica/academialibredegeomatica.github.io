@@ -1,8 +1,8 @@
 ---
-// 1. Recibimos la entrada de la colección como prop
+// Recibimos la entrada de la colección
 const { entry } = Astro.props;
 
-// 2. Extraemos los datos del frontmatter (Markdown)
+// Extraemos los datos con valores por defecto
 const { 
   title = "Curso sin título", 
   empresa = "CAEG", 
@@ -10,14 +10,18 @@ const {
   botonTexto = "ACCESO" 
 } = entry.data || {};
 
-// 3. Lógica de imagen: Priorizamos la ruta de la carpeta public
+// LÓGICA DE IMAGEN MEJORADA
 const rawImage = entry.data?.image;
 let imgSrc = "";
 
 if (rawImage) {
-  // Si Astro lo procesa como objeto (en src/assets), usamos .src
-  // Si es un string (carpeta public), lo usamos directo
+  // Si es un objeto (de src/assets), extraemos la URL. Si es texto, lo usamos directo.
   imgSrc = typeof rawImage === 'object' ? rawImage.src : rawImage;
+  
+  // Limpieza de seguridad: Si la ruta no empieza con "/" y no es una URL externa, se lo ponemos.
+  if (typeof imgSrc === 'string' && !imgSrc.startsWith('/') && !imgSrc.startsWith('http')) {
+    imgSrc = '/' + imgSrc;
+  }
 }
 ---
 
@@ -29,19 +33,23 @@ if (rawImage) {
         src={imgSrc} 
         alt={title} 
         loading="eager"
+        decoding="sync"
         class="object-cover w-full h-full opacity-100 group-hover:scale-110 transition-transform duration-700"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
       <div class="hidden flex-col items-center text-red-400 text-[10px] p-4 text-center">
-        <span class="font-bold">Error de carga:</span>
-        <code class="text-[8px] mt-1 bg-black/40 p-1 rounded">{imgSrc}</code>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-1 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <span class="font-bold">Error de ruta:</span>
+        <code class="text-[8px] mt-1 bg-black/40 p-1 rounded break-all">{imgSrc}</code>
       </div>
     ) : (
       <div class="flex flex-col items-center text-slate-500 text-xs italic">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mb-2 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/astro" class="w-10 h-10 mb-2 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
-        Imagen no definida
+        Sin imagen configurada
       </div>
     )}
     
@@ -71,7 +79,5 @@ if (rawImage) {
 </div>
 
 <style>
-  .h-full {
-    min-height: 420px;
-  }
+  .h-full { min-height: 420px; }
 </style>
