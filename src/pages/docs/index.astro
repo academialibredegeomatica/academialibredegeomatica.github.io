@@ -1,16 +1,21 @@
 ---
+import { getCollection, getEntry } from 'astro:content';
 import CollectionLayout from "@components/docs/CollectionLayout.astro";
-import { getIndex, getGroups } from "@lib/contentParser";
 import type { DocsEntry } from "@/types";
 
-// 1. Traemos los grupos sin el sortByTitle automático
-const collectionIndex = (await getIndex("docs")) as DocsEntry;
-const allGroups = (await getGroups("docs")) as DocsEntry[];
+// 1. Traemos el índice de la colección (el archivo _index.md o similar)
+// Usamos getEntry porque es la forma nativa y segura de Astro
+const collectionIndex = await getEntry('docs', '-index') as DocsEntry;
 
-// 2. Ordenamos manualmente por el campo 'weight' que añadimos al Markdown
+// 2. Traemos todos los cursos de la carpeta 'docs'
+const allGroups = await getCollection('docs', ({ id }) => {
+  return !id.startsWith('-'); // Filtramos para que no incluya el archivo de configuración _index.md
+}) as DocsEntry[];
+
+// 3. Ordenamos manualmente por el campo 'weight'
 const groupIndices = allGroups.sort((a, b) => {
-  const weightA = a.data.weight || 99; // Si no tiene peso, lo manda al final
-  const weightB = b.data.weight || 99;
+  const weightA = a.data.weight ?? 99; // Usamos ?? para asegurar que si es 0, se respete
+  const weightB = b.data.weight ?? 99;
   return weightA - weightB;
 });
 ---
