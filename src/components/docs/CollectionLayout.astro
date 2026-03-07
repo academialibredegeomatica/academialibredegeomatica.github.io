@@ -1,45 +1,18 @@
----
-import BaseLayout from "@components/base/BaseLayout.astro";
-import DocCard from "@components/docs/Card.astro";
-import CourseCard from "@components/docs/CourseCard.astro"; // Importamos el nuevo molde
-import PageHeader from "@components/common/PageHeader.astro";
-import type { DocsEntry } from "@/types";
+{
+  entries.map((entry) => {
+    // Esta es la prueba definitiva: 
+    // Si el ID termina en "/-index", es una CATEGORÍA (Caja limpia).
+    // Si NO termina en "/-index", es un CURSO (Ficha con botón).
+    const isCategory = entry.id.endsWith("/-index");
 
-interface Props {
-  collectionIndex: DocsEntry;
-  entries: DocsEntry[];
-}
-
-const { collectionIndex, entries } = Astro.props;
-
-// Detectamos si estamos en la raíz (viendo las 10 categorías) 
-// o dentro de una categoría (viendo los cursos)
-const isMainGallery = collectionIndex.id === "docs/-index" || collectionIndex.id === "docs/-index.md";
----
-
-<BaseLayout
-  title={collectionIndex.data.title}
-  image={collectionIndex.data.image?.src}
-  description={collectionIndex.data.description}
->
-  <PageHeader title={collectionIndex.data.title} />
-  <section class="section">
-    <div class="container">
-      <div class="row">
-        {
-          entries.map((entry) => (
-            <div class="md:col-6 lg:col-4 h-min p-2">
-              {isMainGallery ? (
-                /* Si es la galería principal, usa el diseño limpio */
-                <DocCard entry={entry} />
-              ) : (
-                /* Si estamos dentro de una categoría, usa la ficha con botón ACCESO */
-                <CourseCard entry={entry} />
-              )}
-            </div>
-          ))
-        }
+    return (
+      <div class="md:col-6 lg:col-4 h-min p-2">
+        {isCategory ? (
+          <DocCard entry={entry} />
+        ) : (
+          <CourseCard entry={entry} />
+        )}
       </div>
-    </div>
-  </section>
-</BaseLayout>
+    );
+  })
+}
