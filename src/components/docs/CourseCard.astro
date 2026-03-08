@@ -5,9 +5,9 @@ if (!entry) return null;
 const data = entry.data || {};
 const title = data.title || "Curso";
 const image = data.image || "";
-const urlDestino = data.url_destino; // El link de YouTube
+const urlDestino = data.url_destino; // Tu link de YouTube
 
-// Generamos la URL interna por si no hay link de YouTube
+// Ruta interna por si no hay link externo
 const urlInterna = `/docs/${entry.id.replace(".md", "").replace("/-index", "")}`;
 
 const destinoFinal = urlDestino || urlInterna;
@@ -37,7 +37,7 @@ const esExterno = String(destinoFinal).startsWith('http');
         href={destinoFinal}
         target={esExterno ? "_blank" : "_self"}
         rel={esExterno ? "noopener noreferrer" : ""}
-        class="block w-full text-center bg-[#2563eb] hover:bg-blue-500 text-white text-xs font-bold py-3 rounded-xl uppercase no-underline"
+        class="block w-full text-center bg-[#2563eb] hover:bg-blue-500 text-white text-xs font-bold py-3 rounded-xl uppercase no-underline shadow-lg"
       >
         {urlDestino ? "VER VIDEO" : "ACCESO"}
       </a>
