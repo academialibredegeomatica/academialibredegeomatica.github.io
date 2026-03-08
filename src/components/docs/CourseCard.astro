@@ -1,35 +1,18 @@
 ---
 const { entry } = Astro.props;
 
-// Seguridad: Si no hay datos, no dibujamos nada
 if (!entry || !entry.data) return null;
 
-// Extraemos los campos que definiste en tu Markdown
 const { title, image, url_destino, botonTexto, tipo, empresa } = entry.data;
 
-/**
- * 1. GENERACIÓN DE URL LIMPIA:
- * Quitamos el .md y el /index para que las rutas de las carpetas 
- * funcionen perfectamente sin errores 404.
- */
+// 1. Generación de URL limpia
 const urlInterna = `/docs/${entry.id
   .replace(/\.md$/, '')
   .replace(/\/index$/, '')
   .replace(/^index$/, '')}`;
 
-/**
- * 2. LÓGICA DEL DESTINO:
- * Si en el MD pones 'url_destino', el botón te llevará a ese link (YouTube, Drive, etc).
- * Si no pones nada, te llevará a la página interna del curso.
- */
 const destinoFinal = url_destino || urlInterna;
 const esExterno = String(destinoFinal).startsWith('http');
-
-/**
- * 3. LÓGICA DEL TEXTO DEL BOTÓN:
- * Por defecto siempre dirá "ACCESO".
- * Pero si en el MD escribes 'botonTexto: "DESCARGAR"', usará ese texto.
- */
 const textoBoton = botonTexto || "ACCESO";
 ---
 
@@ -37,7 +20,7 @@ const textoBoton = botonTexto || "ACCESO";
   
   <div class="relative aspect-video bg-slate-800 flex items-center justify-center p-2 overflow-hidden">
     
-    {tipo && (
+    {tipo && tipo.trim() !== "" && (
       <div class="absolute top-3 right-3 z-10 bg-emerald-500 text-white text-[9px] font-black px-2 py-1 rounded-md shadow-lg tracking-wider uppercase">
         {tipo}
       </div>
@@ -46,7 +29,7 @@ const textoBoton = botonTexto || "ACCESO";
     {image ? (
       <img 
         src={image} 
-        alt={title || "Miniatura"} 
+        alt={title} 
         class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
       />
@@ -57,7 +40,7 @@ const textoBoton = botonTexto || "ACCESO";
 
   <div class="p-5 flex flex-col flex-grow text-center">
     
-    {empresa && (
+    {empresa && empresa.trim() !== "" && (
       <span class="text-blue-400 text-[10px] font-black tracking-[0.2em] uppercase mb-2 block opacity-80">
         {empresa}
       </span>
