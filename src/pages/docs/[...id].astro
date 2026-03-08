@@ -8,47 +8,54 @@ import { sortByTitle } from "@lib/sortFunctions";
 export async function getStaticPaths() {
   const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
 
-  const paths = entries.map((entry) => {
-    const segments = entry.id.replace("/-index", "").split("/");
+  return entries.map((entry) => {
+    // Si el ID termina en -index, es una categoría (Grupo)
+    const isGroup = entry.id.endsWith("-index");
+    
+    // Generamos la URL: si es categoría, quitamos el /-index para que la URL sea limpia
+    const idParam = isGroup 
+      ? entry.id.replace("/-index", "") 
+      : entry.id;
 
-    if (segments.length === 1) {
-      return {
-        params: { id: segments[0] },
-        props: { entry, isGroup: true },
-      };
-    } else if (segments.length === 2) {
-      return {
-        params: { id: entry.id },
-        props: { entry, isGroup: false },
-      };
-    }
+    return {
+      params: { id: idParam },
+      props: { entry, isGroup },
+    };
   });
-
-  return paths;
 }
 
 const { entry, isGroup } = Astro.props;
-const groupName = entry.id.replace("/-index", "");
+
+// Obtenemos el nombre del grupo (el nombre de la carpeta)
+// Si el ID es "gestion-del-riesgo/-index", el grupo es "gestion-del-riesgo"
+const groupName = entry.id.includes('/') 
+  ? entry.id.split('/')[0] 
+  : entry.id.replace("-index", "");
+
+// Si es un grupo (Categoría), buscamos todos los archivos dentro de esa carpeta
 const groupEntries = isGroup
   ? ((await getEntriesInGroup("docs", groupName, sortByTitle)) as DocsEntry[])
   : [];
 
-// Construct Doc Browser menu
+// Construir el menú del navegador lateral
 const browserMenu: MenuItem[] = [];
 const groups = (await getGroups("docs", sortByTitle)) as DocsEntry[];
+
 await Promise.all(
   groups.map(async (group) => {
-    const groupEntries = (await getEntriesInGroup(
+    const cleanGroupId = group.id.replace("/-index", "");
+    const subEntries = (await getEntriesInGroup(
       "docs",
-      group.id.replace("/-index", ""),
+      cleanGroupId,
       sortByTitle
     )) as DocsEntry[];
+    
     browserMenu.push({
       title: group.data.title,
-      id: group.id.replace("/-index", ""),
-      children: groupEntries.map((groupEntry) => ({
-        title: groupEntry.data.title,
-        id: groupEntry.id,
+      id: cleanGroupId,
+      children: subEntries.map((subEntry) => ({
+        title: subEntry.data.title,
+        id: subEntry.id,
         children: [],
       })),
     });
