@@ -1,16 +1,44 @@
 ---
-import type { IndexCardsEntry } from "@/types";
 import BaseLayout from "@components/base/BaseLayout.astro";
-import Swiper from "@components/index-cards/Swiper";
+import PageHeader from "@components/common/PageHeader.astro";
+import type { DocsEntry } from "@/types";
 
 interface Props {
-  entry: IndexCardsEntry;
+  entry: DocsEntry;
 }
 
 const { entry } = Astro.props;
-const { title, description, cards } = entry.data;
+
+// PROTECCIÓN: Si por alguna razón los datos no llegan, mostramos un error amigable
+if (!entry || !entry.data) {
+  return Astro.redirect('/404');
+}
+
+const { title, description, image } = entry.data;
+const { Content } = await entry.render();
 ---
 
-<BaseLayout title={title} description={description}>
-  <Swiper {cards} client:load />
+<BaseLayout 
+  title={title} 
+  description={description} 
+  image={image}
+>
+  <PageHeader title={title} />
+  
+  <section class="section py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        {image && (
+          <img 
+            src={image} 
+            alt={title} 
+            class="w-full h-auto rounded-xl mb-8 shadow-lg"
+          />
+        )}
+        <div class="prose prose-invert prose-lg max-w-none text-slate-300">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

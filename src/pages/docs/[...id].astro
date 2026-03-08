@@ -1,60 +1,47 @@
 ---
-import type { DocsEntry, MenuItem } from "@/types";
-import EntryLayout from "@components/docs/EntryLayout.astro";
+import { getCollection, getEntry } from 'astro:content';
 import CollectionLayout from "@components/docs/CollectionLayout.astro";
-import { getEntries, getEntriesInGroup, getGroups } from "@lib/contentParser";
-import { sortByTitle } from "@lib/sortFunctions";
+import EntryLayout from "@components/docs/EntryLayout.astro";
+import type { DocsEntry } from "@/types";
 
 export async function getStaticPaths() {
-  const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
+  const allEntries = await getCollection('docs');
+  
+  return allEntries.map(entry => {
+    // 1. Limpiamos el ID de extensiones y del sufijo -index
+    const cleanId = entry.id.replace(/\.md$/, "").replace("/-index", "");
+    
+    // 2. Determinamos si es un grupo (categoría) o un curso individual
+    const isGroup = entry.id.includes("-index");
 
-  return entries.flatMap((entry) => {
-    // Generamos la ruta tal cual viene en el archivo (con espacios y .md)
-    // Esto es lo que tus tarjetas están pidiendo según la terminal
-    const pathWithMd = entry.id;
-    const pathClean = entry.id.replace(".md", "").replace("/-index", "");
-
-    return [
-      { params: { id: pathWithMd }, props: { entry } },
-      { params: { id: pathClean }, props: { entry } }
-    ];
+    return {
+      params: { id: cleanId },
+      props: { entry, isGroup },
+    };
   });
 }
 
-const { entry } = Astro.props;
-const isGroup = entry.id.includes("-index");
+const { entry, isGroup } = Astro.props;
 
-// Extraemos el nombre de la carpeta de forma segura
-const groupName = entry.id.split('/')[0];
-
-const groupEntries = isGroup
-  ? ((await getEntriesInGroup("docs", groupName, sortByTitle)) as DocsEntry[])
-  : [];
-
-// Menú lateral
-const browserMenu: MenuItem[] = [];
-const groups = (await getGroups("docs", sortByTitle)) as DocsEntry[];
-
-for (const group of groups) {
-  const cleanGroupId = group.id.replace("/-index", "").replace(".md", "");
-  const subEntries = (await getEntriesInGroup("docs", group.id.split('/')[0], sortByTitle)) as DocsEntry[];
+// Lógica para obtener los hijos si es un grupo
+let groupEntries: DocsEntry[] = [];
+if (isGroup) {
+  const allDocs = await getCollection('docs');
+  // Obtenemos el nombre de la carpeta (ej: "Gestion del riesgo")
+  const folderName = entry.id.split('/')[0];
   
-  browserMenu.push({
-    title: group.data.title,
-    id: cleanGroupId,
-    children: subEntries.map((sub) => ({
-      title: sub.data.title,
-      id: sub.id,
-      children: [],
-    })),
-  });
+  // Filtramos: que estén en la misma carpeta y que NO sean el índice
+  groupEntries = allDocs.filter(item => 
+    item.id.startsWith(folderName) && !item.id.includes("-index")
+  ) as DocsEntry[];
+
+  // Ordenamos por weight
+  groupEntries.sort((a, b) => (a.data.weight ?? 99) - (b.data.weight ?? 99));
 }
 ---
 
-{
-  isGroup ? (
-    <CollectionLayout collectionIndex={entry} entries={groupEntries} />
-  ) : (
-    <EntryLayout entry={entry} browserMenu={browserMenu} />
-  )
-}
+{isGroup ? (
+  <CollectionLayout collectionIndex={entry} entries={groupEntries} />
+) : (
+  <EntryLayout entry={entry} />
+)}
