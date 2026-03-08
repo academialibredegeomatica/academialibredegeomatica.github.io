@@ -9,51 +9,46 @@ export async function getStaticPaths() {
   const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
 
   return entries.flatMap((entry) => {
-    const isGroup = entry.id.includes("-index");
-    const baseId = isGroup ? entry.id.replace("/-index", "") : entry.id;
+    // Generamos la ruta tal cual viene en el archivo (con espacios y .md)
+    // Esto es lo que tus tarjetas están pidiendo según la terminal
+    const pathWithMd = entry.id;
+    const pathClean = entry.id.replace(".md", "").replace("/-index", "");
 
-    // Generamos DOS rutas por cada entrada para máxima compatibilidad
-    // 1. La ruta limpia (ej: "gestion-del-riesgo")
-    // 2. La ruta con .md (ej: "gestion-del-riesgo.md") que es la que tus tarjetas están pidiendo
     return [
-      { params: { id: baseId.replace(".md", "") }, props: { entry, isGroup } },
-      { params: { id: baseId.endsWith(".md") ? baseId : `${baseId}.md` }, props: { entry, isGroup } }
+      { params: { id: pathWithMd }, props: { entry } },
+      { params: { id: pathClean }, props: { entry } }
     ];
   });
 }
 
-const { entry, isGroup } = Astro.props;
+const { entry } = Astro.props;
+const isGroup = entry.id.includes("-index");
 
-// Lógica para encontrar el nombre de la carpeta (Grupo)
-// Esto asegura que el curso "Análisis de peligros..." encuentre a su padre "Gestión del riesgo"
-const groupName = entry.id.includes('/') 
-  ? entry.id.split('/')[0] 
-  : entry.id.replace("-index", "").replace(".md", "");
+// Extraemos el nombre de la carpeta de forma segura
+const groupName = entry.id.split('/')[0];
 
 const groupEntries = isGroup
   ? ((await getEntriesInGroup("docs", groupName, sortByTitle)) as DocsEntry[])
   : [];
 
-// Construcción del menú lateral
+// Menú lateral
 const browserMenu: MenuItem[] = [];
 const groups = (await getGroups("docs", sortByTitle)) as DocsEntry[];
 
-await Promise.all(
-  groups.map(async (group) => {
-    const cleanGroupId = group.id.replace("/-index", "").replace(".md", "");
-    const subEntries = (await getEntriesInGroup("docs", cleanGroupId, sortByTitle)) as DocsEntry[];
-    
-    browserMenu.push({
-      title: group.data.title,
-      id: cleanGroupId,
-      children: subEntries.map((sub) => ({
-        title: sub.data.title,
-        id: sub.id.replace(".md", ""),
-        children: [],
-      })),
-    });
-  })
-);
+for (const group of groups) {
+  const cleanGroupId = group.id.replace("/-index", "").replace(".md", "");
+  const subEntries = (await getEntriesInGroup("docs", group.id.split('/')[0], sortByTitle)) as DocsEntry[];
+  
+  browserMenu.push({
+    title: group.data.title,
+    id: cleanGroupId,
+    children: subEntries.map((sub) => ({
+      title: sub.data.title,
+      id: sub.id,
+      children: [],
+    })),
+  });
+}
 ---
 
 {
