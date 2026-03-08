@@ -2,82 +2,73 @@
 const { entry } = Astro.props;
 if (!entry || !entry.data) return null;
 
-const { title, image, url_destino, botonTexto, tipo, empresa } = entry.data;
+// Usamos nombres de variables distintos para evitar conflictos con el esquema
+const docTitle = entry.data.title;
+const docImage = entry.data.image;
+const docLinkExterno = entry.data.url_destino;
+const docTipo = entry.data.tipo;
+const docEmpresa = entry.data.empresa;
 
-// Definición de rutas
-const urlInterna = `/docs/${entry.id.replace(/\.md$/, '').replace(/\/index$/, '').replace(/^index$/, '')}`;
-const enlaceFinal = (url_destino && url_destino.trim().length > 0) ? url_destino.trim() : urlInterna;
-const esExterno = enlaceFinal.startsWith('http');
+const urlInternaRuta = `/docs/${entry.id.replace(/\.md$/, '').replace(/\/index$/, '').replace(/^index$/, '')}`;
 
-// Lógica de visualización
-const esCategoria = entry.id.endsWith('index') || entry.id.endsWith('index.md');
-const mostrarTipo = !esCategoria && tipo && tipo.trim().length > 1;
-const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
+// Determinamos el destino final con prioridad absoluta al link externo
+const rutaFinalFinal = (docLinkExterno && docLinkExterno.trim().length > 0) 
+  ? docLinkExterno.trim() 
+  : urlInternaRuta;
+
+const esRutaExterna = rutaFinalFinal.startsWith('http');
+
+// Lógica para esconder datos en categorías
+const esPaginaIndex = entry.id.endsWith('index') || entry.id.endsWith('index.md');
+const verTipo = !esPaginaIndex && docTipo && docTipo.trim().length > 1;
+const verEmpresa = !esPaginaIndex && docEmpresa && docEmpresa.trim().length > 1;
 ---
 
-<div class="course-card-container h-full bg-[#1e293b] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-xl transition-all hover:border-blue-500/50 group relative">
+<div class="card-wrapper h-full bg-[#1e293b] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-xl relative group">
   
   <div class="relative aspect-video bg-slate-800 flex items-center justify-center p-2 overflow-hidden">
-    {mostrarTipo && (
-      <div class="absolute top-3 right-3 z-10 bg-emerald-500 text-white text-[10px] font-black px-3 py-1.5 rounded-md shadow-lg tracking-wider uppercase">
-        {tipo}
+    {verTipo && (
+      <div class="absolute top-3 right-3 z-50 bg-emerald-500 text-white text-[10px] font-black px-3 py-1.5 rounded-md shadow-lg uppercase">
+        {docTipo}
       </div>
     )}
-    {image && <img src={image} alt={title} class="w-full h-full object-contain" />}
+    {docImage && <img src={docImage} alt={docTitle} class="w-full h-full object-contain" />}
   </div>
 
   <div class="p-5 flex flex-col flex-grow text-center">
-    {mostrarEmpresa && (
-      <span class="text-cyan-400 text-sm font-black tracking-[0.3em] uppercase mb-3 block drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]">
-        {empresa}
+    {verEmpresa && (
+      <span class="text-cyan-400 text-sm font-black tracking-[0.3em] uppercase mb-3 block drop-shadow-md">
+        {docEmpresa}
       </span>
     )}
 
     <h3 class="text-white font-bold text-base mb-4 leading-tight min-h-[3.5rem] flex items-center justify-center px-2">
-      {title}
+      {docTitle}
     </h3>
 
     <div class="mt-auto pt-2">
-      <button 
-        data-url={enlaceFinal}
-        data-externo={esExterno}
-        class="redirect-button relative z-50 block w-full text-center bg-[#2563eb] hover:bg-blue-400 text-white text-[11px] font-bold py-3.5 rounded-xl uppercase shadow-lg transition-all active:scale-95 cursor-pointer"
+      <a 
+        href={rutaFinalFinal}
+        target={esRutaExterna ? "_blank" : "_self"}
+        rel="noopener noreferrer"
+        onclick={esRutaExterna ? "event.stopPropagation();" : ""}
+        class="force-redirect relative z-[100] block w-full text-center bg-[#2563eb] hover:bg-blue-400 text-white text-[11px] font-bold py-3.5 rounded-xl uppercase no-underline"
       >
-        {botonTexto || "ACCESO"}
-      </button>
+        {entry.data.botonTexto || "ACCESO"}
+      </a>
     </div>
   </div>
 
-  {!url_destino && (
-    <a href={urlInterna} class="absolute inset-0 z-10" aria-label={title}></a>
+  {/* Solo creamos el link de fondo si NO hay destino externo */}
+  {!docLinkExterno && (
+    <a href={urlInternaRuta} class="absolute inset-0 z-10"></a>
   )}
 </div>
 
-<script>
-  // Este script se encarga de interceptar el clic y forzar la salida
-  function setupButtons() {
-    const buttons = document.querySelectorAll('.redirect-button');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        // Detiene CUALQUIER otra acción de la página
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const url = btn.getAttribute('data-url');
-        const esExterno = btn.getAttribute('data-externo') === 'true';
-
-        if (url) {
-          if (esExterno) {
-            window.open(url, '_blank', 'noopener,noreferrer');
-          } else {
-            window.location.href = url;
-          }
-        }
-      });
-    });
+<style>
+  /* Forzamos que el botón siempre esté arriba de cualquier link fantasma */
+  .force-redirect {
+    position: relative !important;
+    z-index: 100 !important;
   }
-
-  // Ejecutar al cargar y al navegar (para Astro View Transitions)
-  setupButtons();
-  document.addEventListener('astro:after-swap', setupButtons);
-</script>
+</style>
