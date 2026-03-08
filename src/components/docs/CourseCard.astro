@@ -4,13 +4,22 @@ if (!entry || !entry.data) return null;
 
 const { title, image, url_destino, botonTexto, tipo, empresa } = entry.data;
 
+// 1. URL INTERNA: Por si no hay link externo
 const urlInterna = `/docs/${entry.id.replace(/\.md$/, '').replace(/\/index$/, '').replace(/^index$/, '')}`;
-const destinoFinal = url_destino || urlInterna;
+
+/**
+ * 2. PRIORIDAD DE ENLACE: 
+ * Forzamos a que si existe 'url_destino', esa sea la ÚNICA ruta.
+ * Usamos .trim() para evitar errores si hay espacios accidentales.
+ */
+const tieneLinkExterno = url_destino && url_destino.trim() !== "";
+const destinoFinal = tieneLinkExterno ? url_destino.trim() : urlInterna;
+
+// 3. DETERMINAR SI ABRE EN NUEVA PESTAÑA
 const esExterno = String(destinoFinal).startsWith('http');
+
 const textoBoton = botonTexto || "ACCESO";
-
 const esCategoria = entry.id.endsWith('index') || entry.id.endsWith('index.md');
-
 const mostrarTipo = !esCategoria && tipo && tipo.trim().length > 1;
 const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
 ---
@@ -18,7 +27,6 @@ const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
 <div class="h-full bg-[#1e293b] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-xl transition-all hover:border-blue-500/50 group">
   
   <div class="relative aspect-video bg-slate-800 flex items-center justify-center p-2 overflow-hidden">
-    
     {mostrarTipo && (
       <div class="absolute top-3 right-3 z-10 bg-emerald-500 text-white text-[10px] font-black px-3 py-1.5 rounded-md shadow-lg tracking-wider uppercase">
         {tipo}
@@ -26,19 +34,13 @@ const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
     )}
 
     {image ? (
-      <img 
-        src={image} 
-        alt={title} 
-        class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-        loading="lazy"
-      />
+      <img src={image} alt={title} class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" loading="lazy" />
     ) : (
       <div class="text-slate-600 text-xs italic">Sin imagen</div>
     )}
   </div>
 
   <div class="p-5 flex flex-col flex-grow text-center">
-    
     {mostrarEmpresa && (
       <span class="text-cyan-400 text-sm font-black tracking-[0.3em] uppercase mb-3 block drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]">
         {empresa}
@@ -51,10 +53,10 @@ const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
 
     <div class="mt-auto pt-2">
       <a 
-        href={destinoFinal}
+        href={destinoFinal} 
         target={esExterno ? "_blank" : "_self"}
         rel={esExterno ? "noopener noreferrer" : ""}
-        class="block w-full text-center bg-[#2563eb] hover:bg-blue-400 text-white text-[11px] font-bold py-3.5 rounded-xl uppercase no-underline shadow-lg transition-all active:scale-95 active:bg-blue-600"
+        class="block w-full text-center bg-[#2563eb] hover:bg-blue-400 text-white text-[11px] font-bold py-3.5 rounded-xl uppercase no-underline shadow-lg transition-all active:scale-95"
       >
         {textoBoton}
       </a>
