@@ -1,29 +1,31 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import CollectionLayout from "@components/docs/CollectionLayout.astro";
-import type { DocsEntry } from "@/types";
 
-// 1. Traemos el índice general de la colección si existe
-const collectionIndex = await getEntry('docs', '-index') as DocsEntry;
+// 1. Traemos el índice general de la colección (Ahora es 'index' sin guion)
+const collectionIndex = await getEntry('docs', 'index');
 
 /**
- * 2. FILTRO MAESTRO:
- * Antes aceptábamos todo lo que NO empezara con "-".
- * AHORA: Solo aceptamos archivos que TERMINEN en "-index".
- * Esto garantiza que solo las 10 categorías principales se muestren en la galería,
- * ignorando cursos individuales como "Analisis de peligros...".
+ * 2. FILTRO MAESTRO ACTUALIZADO:
+ * Buscamos archivos que estén en carpetas y se llamen 'index'.
+ * Esto filtrará tus categorías principales (las 10 que quieres mostrar).
  */
-const allGroups = await getCollection('docs', ({ id }) => {
-  // Filtramos para que SOLO incluya archivos que terminen en '-index' o '-index.md'
-  return id.endsWith('-index') || id.endsWith('-index.md');
-}) as DocsEntry[];
+const allGroups = await getCollection('docs', (entry) => {
+  // Filtramos para que incluya archivos que sean 'index' dentro de carpetas
+  // Ejemplo: "gestion-del-riesgo/index"
+  return entry.id.endsWith('index') || entry.id.endsWith('index.md');
+});
 
-// 3. Ordenamos manualmente por el campo 'weight'
-const groupIndices = allGroups.sort((a, b) => {
+// 3. Filtramos para NO incluir el index principal en la lista de tarjetas
+// (No queremos que la página de cursos se muestre a sí misma como un curso)
+const filteredGroups = allGroups.filter(group => group.id !== 'index' && group.id !== 'index.md');
+
+// 4. Ordenamos por el campo 'weight' definido en el Markdown
+const groupIndices = filteredGroups.sort((a, b) => {
   const weightA = a.data.weight ?? 99;
   const weightB = b.data.weight ?? 99;
   return weightA - weightB;
 });
 ---
 
-<CollectionLayout entries={groupIndices} collectionIndex={collectionIndex} />
+<CollectionLayout collectionIndex={collectionIndex} entries={groupIndices} />
