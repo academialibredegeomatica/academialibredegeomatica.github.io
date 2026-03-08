@@ -1,27 +1,29 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
 import PageHeader from "@components/common/PageHeader.astro";
-import type { DocsEntry } from "@/types";
 
-interface Props {
-  entry: DocsEntry;
-}
-
+// Recibimos la entrada del curso desde las props de Astro
 const { entry } = Astro.props;
 
-// Protección para evitar el error de "undefined" en localhost
+/**
+ * CONTROL DE ERRORES:
+ * Si por algún motivo la ruta falla o el archivo .md está vacío,
+ * redirigimos al usuario a una página 404 en lugar de romper el sitio.
+ */
 if (!entry || !entry.data) {
   return Astro.redirect('/404');
 }
 
 const { title, description, image } = entry.data;
+
+// Renderizamos el contenido Markdown (el texto que escribes debajo de los ---)
 const { Content } = await entry.render();
 ---
 
 <BaseLayout 
   title={title} 
   description={description} 
-  image={image?.src || image}
+  image={image}
 >
   <PageHeader title={title} />
   
@@ -29,16 +31,20 @@ const { Content } = await entry.render();
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         
+        {/* Mostramos la imagen destacada si existe en el Markdown */}
         {image && (
-          <div class="mb-10">
+          <div class="mb-12">
             <img 
-              src={image?.src || image} 
+              src={image} 
               alt={title} 
-              class="w-full h-auto rounded-2xl shadow-2xl border border-slate-700"
+              class="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
             />
           </div>
         )}
 
+        {/* Contenedor del texto del curso. 
+          Usamos 'prose-invert' para que el texto sea blanco/gris sobre fondo oscuro.
+        */}
         <div class="prose prose-invert prose-lg max-w-none 
                     prose-headings:text-white prose-p:text-slate-300 
                     prose-strong:text-emerald-400 prose-a:text-sky-400">

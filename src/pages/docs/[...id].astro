@@ -2,25 +2,23 @@
 import { getCollection } from 'astro:content';
 import CollectionLayout from "@components/docs/CollectionLayout.astro";
 import EntryLayout from "@components/docs/EntryLayout.astro";
-import type { DocsEntry } from "@/types";
 
 export async function getStaticPaths() {
   const allEntries = await getCollection('docs');
   
   return allEntries.flatMap(entry => {
-    // Identificamos si es una categoría (contiene -index)
     const isGroup = entry.id.includes("-index");
-    // Limpiamos el ID para la URL (quitamos el -index si lo tiene)
-    const baseId = isGroup ? entry.id.replace("/-index", "") : entry.id;
+    // Limpiamos el ID quitando el -index para la URL
+    const baseId = entry.id.replace("/-index", "");
 
-    // Generamos dos rutas por cada archivo para evitar el error 404 de la terminal
+    // Creamos rutas que acepten el ID con y sin .md para evitar el 404 de la terminal
     return [
       { 
         params: { id: baseId.replace(".md", "") }, 
         props: { entry, isGroup } 
       },
       { 
-        params: { id: baseId.endsWith(".md") ? baseId : `${baseId}.md` }, 
+        params: { id: baseId }, 
         props: { entry, isGroup } 
       }
     ];
@@ -29,18 +27,19 @@ export async function getStaticPaths() {
 
 const { entry, isGroup } = Astro.props;
 
-// Lógica para obtener los cursos hijos si estamos dentro de una categoría
-let groupEntries: DocsEntry[] = [];
+// Lógica para obtener los cursos que pertenecen a una categoría
+let groupEntries = [];
 if (isGroup) {
   const allDocs = await getCollection('docs');
+  // Obtenemos el nombre de la carpeta (ej: "Gestion del riesgo")
   const folderName = entry.id.split('/')[0];
   
-  // Filtramos: archivos que están en la misma carpeta y que NO son el índice
+  // Filtramos los archivos que están dentro de esa carpeta y que no son el índice
   groupEntries = allDocs.filter(item => 
     item.id.startsWith(folderName) && !item.id.includes("-index")
-  ) as DocsEntry[];
+  );
 
-  // Ordenamos por el campo 'weight' del Markdown
+  // Ordenamos por el peso definido en el Markdown (weight)
   groupEntries.sort((a, b) => (a.data.weight ?? 99) - (b.data.weight ?? 99));
 }
 ---

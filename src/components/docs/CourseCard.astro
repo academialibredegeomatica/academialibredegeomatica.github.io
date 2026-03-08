@@ -10,20 +10,15 @@ const tipo = data.tipo || "Curso";
 const botonTexto = data.botonTexto || "ACCESO";
 const image = data.image || "";
 
-// LEER EL DESTINO DESDE EL MARKDOWN
-const urlDestinoManual = data.url_destino;
-
-// RUTA POR DEFECTO SI NO HAY URL MANUAL
+// 1. Limpiamos la URL para evitar el error 404 de la terminal
 const urlInterna = `/docs/${entry.id
   .replace(".md", "")
   .replace("/-index", "")
-  .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-  .toLowerCase()}`;
+  .split('/')
+  .map(part => encodeURIComponent(part.trim())) // Maneja espacios y caracteres especiales
+  .join('/')}`;
 
-// DECISIÓN FINAL DEL DESTINO
-const destinoFinal = urlDestinoManual || urlInterna;
-
-// VERIFICACIÓN DE LINK EXTERNO
+const destinoFinal = data.url_destino || urlInterna;
 const esExterno = String(destinoFinal).startsWith('http');
 ---
 
@@ -34,11 +29,12 @@ const esExterno = String(destinoFinal).startsWith('http');
       <img 
         src={image} 
         alt={title} 
+        /* Importante: 'alt' soluciona el error de la pantalla roja */
         class="object-contain w-full h-full opacity-100 group-hover:scale-105 transition-transform duration-700"
-        loading="eager"
+        loading="lazy"
       />
     ) : (
-      <div class="text-slate-500 text-xs italic">Sin imagen configurada</div>
+      <div class="text-slate-500 text-xs italic">Sin imagen</div>
     )}
     
     <div class="absolute top-3 right-3 z-10">
