@@ -1,34 +1,17 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
-import PageHeader from "@components/common/PageHeader.astro";
-
 const { entry } = Astro.props;
-
-if (!entry || !entry.data) {
-  return Astro.redirect('/404');
-}
-
-const { title, description, image } = entry.data;
+if (!entry || !entry.data) return Astro.redirect('/404');
+const { title, image } = entry.data;
 const { Content } = await entry.render();
 ---
-
-<BaseLayout title={title} description={description}>
-  <PageHeader title={title} />
-  <section class="section py-16 bg-[#0f172a]">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        {image && (
-          <div class="mb-12">
-            <img 
-              src={image} 
-              alt={title} 
-              class="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
-            />
-          </div>
-        )}
-        <div class="prose prose-invert prose-lg max-w-none">
-          <Content />
-        </div>
+<BaseLayout title={title}>
+  <section class="py-16 bg-[#0f172a]">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h1 class="text-4xl font-bold text-white mb-8">{title}</h1>
+      {image && <img src={image} alt={title} class="w-full h-auto rounded-2xl mb-8" />}
+      <div class="prose prose-invert max-w-none">
+        <Content />
       </div>
     </div>
   </section>

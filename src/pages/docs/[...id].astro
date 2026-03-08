@@ -8,11 +8,13 @@ export async function getStaticPaths() {
   
   return allEntries.flatMap(entry => {
     const isGroup = entry.id.includes("-index");
-    const baseId = entry.id.replace("/-index", "");
+    // Generamos versiones de la ruta con y sin extensión para máxima compatibilidad
+    const baseId = entry.id.replace("/-index", "").replace(".md", "");
 
     return [
-      { params: { id: baseId.replace(".md", "") }, props: { entry, isGroup } },
-      { params: { id: baseId }, props: { entry, isGroup } }
+      { params: { id: baseId }, props: { entry, isGroup } },
+      { params: { id: baseId.toLowerCase() }, props: { entry, isGroup } },
+      { params: { id: entry.id }, props: { entry, isGroup } }
     ];
   });
 }
@@ -23,6 +25,7 @@ let groupEntries = [];
 if (isGroup) {
   const allDocs = await getCollection('docs');
   const folderName = entry.id.split('/')[0];
+  
   groupEntries = allDocs.filter(item => 
     item.id.startsWith(folderName) && !item.id.includes("-index")
   );

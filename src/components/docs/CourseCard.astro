@@ -3,70 +3,44 @@ const { entry } = Astro.props;
 if (!entry) return null;
 
 const data = entry.data || {};
-const title = data.title || "Curso sin título";
-const empresa = data.empresa || "CAEG";
-const tipo = data.tipo || "Curso";
-const botonTexto = data.botonTexto || "ACCESO";
+const title = data.title || "Curso";
 const image = data.image || "";
+const urlDestino = data.url_destino; // El link de YouTube
 
-// Link de YouTube o Formulario (url_destino)
-const urlDestinoManual = data.url_destino;
+// Generamos la URL interna por si no hay link de YouTube
+const urlInterna = `/docs/${entry.id.replace(".md", "").replace("/-index", "")}`;
 
-// Ruta interna automática (limpiando espacios y tildes)
-const urlInterna = `/docs/${entry.id
-  .replace(".md", "")
-  .replace("/-index", "")
-  .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-  .toLowerCase()}`;
-
-const destinoFinal = urlDestinoManual || urlInterna;
+const destinoFinal = urlDestino || urlInterna;
 const esExterno = String(destinoFinal).startsWith('http');
 ---
 
-<div class="h-full m-2 bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl group transition-all duration-300 hover:border-blue-500/50">
-  
-  <div class="relative aspect-video bg-slate-800 overflow-hidden flex items-center justify-center p-2">
+<div class="h-full m-2 bg-[#0f172a] border border-white/10 rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:border-blue-500/50">
+  <div class="relative aspect-video bg-slate-800 flex items-center justify-center p-2">
     {image ? (
       <img 
         src={image} 
         alt={title} 
-        class="object-contain w-full h-full opacity-100 group-hover:scale-105 transition-transform duration-700"
-        loading="lazy"
+        class="object-contain w-full h-full"
       />
     ) : (
       <div class="text-slate-500 text-xs italic">Sin imagen</div>
     )}
-    
-    <div class="absolute top-3 right-3 z-10">
-      <span class="bg-[#facc15] text-black text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-        {tipo}
-      </span>
-    </div>
   </div>
 
-  <div class="p-5 flex flex-col flex-grow bg-gradient-to-b from-slate-900/50 to-[#0f172a]">
-    <h3 class="text-white font-bold text-base mb-4 leading-tight group-hover:text-blue-400 transition-colors">
+  <div class="p-5 flex flex-col flex-grow">
+    <h3 class="text-white font-bold text-base mb-4 leading-tight">
       {title}
     </h3>
-
-    <div class="mb-5 flex flex-col items-center border-l-4 border-blue-600 bg-blue-900/20 p-3 rounded-r-lg">
-      <span class="text-[9px] text-blue-400 font-black uppercase tracking-widest mb-1">Certifica:</span>
-      <span class="text-white text-sm font-bold text-center">{empresa}</span>
-    </div>
 
     <div class="mt-auto">
       <a 
         href={destinoFinal}
         target={esExterno ? "_blank" : "_self"}
         rel={esExterno ? "noopener noreferrer" : ""}
-        class="block w-full text-center bg-[#2563eb] hover:bg-blue-500 text-white text-xs font-black py-3 rounded-xl border-b-4 border-blue-800 shadow-lg active:translate-y-1 active:border-b-0 transition-all uppercase no-underline cursor-pointer"
+        class="block w-full text-center bg-[#2563eb] hover:bg-blue-500 text-white text-xs font-bold py-3 rounded-xl uppercase no-underline"
       >
-        {botonTexto}
+        {urlDestino ? "VER VIDEO" : "ACCESO"}
       </a>
     </div>
   </div>
 </div>
-
-<style>
-  .h-full { min-height: 420px; }
-</style>
