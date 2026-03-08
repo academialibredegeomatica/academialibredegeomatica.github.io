@@ -3,38 +3,47 @@ import { getCollection } from 'astro:content';
 import CollectionLayout from "@components/docs/CollectionLayout.astro";
 import EntryLayout from "@components/docs/EntryLayout.astro";
 
+// 1. GENERACIÓN DE RUTAS DINÁMICAS
 export async function getStaticPaths() {
   const allEntries = await getCollection('docs');
   
   return allEntries.flatMap(entry => {
-    // 1. El ID original (ej: "Gestion del Riesgo/Tema 1.md")
-    // 2. El ID sin extensión (ej: "Gestion del Riesgo/Tema 1")
+    // Generamos varias opciones de ID para que el navegador siempre encuentre el archivo
     const idSinExtension = entry.id.replace(/\.md$/, '');
     
-    // 3. El ID "limpio" (todo minúsculas y con guiones)
+    // Versión limpia (slug): minúsculas, sin espacios, sin caracteres raros
     const idSlug = idSinExtension
       .toLowerCase()
-      .replace(/\s+/g, '-')     // espacios a guiones
-      .replace(/[^\w-]/g, '');  // quitar caracteres raros
+      .replace(/\s+/g, '-')     
+      .replace(/[^\w-]/g, '');  
 
     return [
-      { params: { id: entry.id }, props: { entry } },
-      { params: { id: idSinExtension }, props: { entry } },
-      { params: { id: idSlug }, props: { entry } }
+      { params: { id: entry.id }, props: { entry } },       // Opción 1: original (con .md)
+      { params: { id: idSinExtension }, props: { entry } }, // Opción 2: sin .md
+      { params: { id: idSlug }, props: { entry } }         // Opción 3: limpia (slug)
     ];
   });
 }
 
+// 2. PROCESAMIENTO DE LA ENTRADA ACTUAL
 const { entry } = Astro.props;
-const isGroup = entry.id.includes("-index");
+
+// Corrección: Detectamos si es una carpeta (índice) de forma flexible
+const isGroup = entry.id.toLowerCase().includes("index");
 
 let groupEntries = [];
 if (isGroup) {
   const allDocs = await getCollection('docs');
+  // Obtenemos el nombre de la carpeta contenedora
   const folderName = entry.id.split('/')[0];
+  
+  // Filtramos los archivos de esa carpeta que NO sean el índice
   groupEntries = allDocs.filter(item => 
-    item.id.startsWith(folderName) && !item.id.includes("-index")
+    item.id.startsWith(folderName) && !item.id.toLowerCase().includes("index")
   );
+  
+  // Opcional: Ordenar alfabéticamente por título
+  groupEntries.sort((a, b) => (a.data.title || "").localeCompare(b.data.title || ""));
 }
 ---
 
