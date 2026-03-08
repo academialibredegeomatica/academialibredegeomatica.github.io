@@ -7,11 +7,12 @@ export async function getStaticPaths() {
   const allEntries = await getCollection('docs');
   
   return allEntries.flatMap(entry => {
+    // Generamos una ruta limpia quitando el .md y los espacios
+    const cleanId = entry.id.replace(/\.md$/, '');
+    
     return [
-      // 1. Ruta limpia oficial de Astro (sin el .md)
-      { params: { id: entry.slug }, props: { entry } },
-      // 2. Ruta de respaldo por si el link lleva el .md escrito
-      { params: { id: entry.id }, props: { entry } }
+      { params: { id: cleanId }, props: { entry } },
+      { params: { id: encodeURI(cleanId) }, props: { entry } }
     ];
   });
 }

@@ -4,32 +4,36 @@ if (!entry || !entry.data) return null;
 
 const { title, image, url_destino, botonTexto } = entry.data;
 
-// Usamos el 'slug' nativo de Astro para una URL siempre limpia
-const urlInterna = `/docs/${entry.slug}`;
+// Forzamos una URL interna sin el .md al final
+const urlInterna = `/docs/${entry.id.replace(/\.md$/, '')}`;
 const destinoFinal = url_destino || urlInterna;
 const esExterno = String(destinoFinal).startsWith('http');
 ---
 
-<div class="h-full bg-[#1e293b] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-lg transition-transform hover:-translate-y-1">
-  <div class="relative aspect-video bg-slate-800 flex items-center justify-center">
+<div class="h-full bg-[#1e293b] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-xl">
+  <div class="relative aspect-video bg-slate-800 flex items-center justify-center p-2">
     {image ? (
       <img 
         src={image} 
-        alt={title || "Curso CAEG"} 
-        class="w-full h-full object-cover"
+        alt={title || "Curso"} 
+        class="w-full h-full object-contain"
       />
     ) : (
-      <div class="text-slate-500 text-xs">Sin imagen</div>
+      <div class="text-slate-500 text-xs italic">Sin imagen</div>
     )}
   </div>
-  
+
   <div class="p-5 flex flex-col flex-grow">
-    <h3 class="text-white font-bold text-sm mb-4">{title}</h3>
+    <h3 class="text-white font-bold text-sm mb-4 leading-tight">
+      {title}
+    </h3>
+
     <div class="mt-auto">
       <a 
-        href={destinoFinal} 
+        href={destinoFinal}
         target={esExterno ? "_blank" : "_self"}
-        class="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-bold py-3 rounded-lg uppercase transition-colors"
+        rel={esExterno ? "noopener noreferrer" : ""}
+        class="block w-full text-center bg-[#2563eb] hover:bg-blue-500 text-white text-[10px] font-bold py-3 rounded-xl uppercase no-underline transition-all active:scale-95"
       >
         {url_destino ? "VER VIDEO" : (botonTexto || "ACCESO")}
       </a>
