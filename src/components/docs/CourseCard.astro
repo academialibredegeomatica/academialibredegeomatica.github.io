@@ -4,19 +4,19 @@ if (!entry || !entry.data) return null;
 
 const { title, image, url_destino, botonTexto, tipo, empresa } = entry.data;
 
-// 1. URL INTERNA: Por si no hay link externo
+/**
+ * 🚀 LÓGICA DE DIRECCIONAMIENTO REFORZADA
+ * Si hay una url_destino en el Markdown, el botón usará esa URL.
+ * Si no la hay, el botón llevará a la página interna del curso.
+ */
 const urlInterna = `/docs/${entry.id.replace(/\.md$/, '').replace(/\/index$/, '').replace(/^index$/, '')}`;
 
-/**
- * 2. PRIORIDAD DE ENLACE: 
- * Forzamos a que si existe 'url_destino', esa sea la ÚNICA ruta.
- * Usamos .trim() para evitar errores si hay espacios accidentales.
- */
-const tieneLinkExterno = url_destino && url_destino.trim() !== "";
-const destinoFinal = tieneLinkExterno ? url_destino.trim() : urlInterna;
+// Forzamos el uso del link externo si existe y tiene texto real
+const tieneDestinoPersonalizado = url_destino && url_destino.trim().length > 0;
+const enlaceFinal = tieneDestinoPersonalizado ? url_destino.trim() : urlInterna;
 
-// 3. DETERMINAR SI ABRE EN NUEVA PESTAÑA
-const esExterno = String(destinoFinal).startsWith('http');
+// Detectamos si es externo para abrir en pestaña nueva
+const esExterno = enlaceFinal.startsWith('http');
 
 const textoBoton = botonTexto || "ACCESO";
 const esCategoria = entry.id.endsWith('index') || entry.id.endsWith('index.md');
@@ -34,7 +34,12 @@ const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
     )}
 
     {image ? (
-      <img src={image} alt={title} class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+      <img 
+        src={image} 
+        alt={title} 
+        class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
     ) : (
       <div class="text-slate-600 text-xs italic">Sin imagen</div>
     )}
@@ -53,7 +58,7 @@ const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
 
     <div class="mt-auto pt-2">
       <a 
-        href={destinoFinal} 
+        href={enlaceFinal} 
         target={esExterno ? "_blank" : "_self"}
         rel={esExterno ? "noopener noreferrer" : ""}
         class="block w-full text-center bg-[#2563eb] hover:bg-blue-400 text-white text-[11px] font-bold py-3.5 rounded-xl uppercase no-underline shadow-lg transition-all active:scale-95"
