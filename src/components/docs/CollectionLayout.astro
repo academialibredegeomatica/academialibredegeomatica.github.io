@@ -10,35 +10,43 @@ interface Props {
   entries: DocsEntry[];
 }
 
-// ESTA LÍNEA ES LA QUE FALTA O ESTÁ MAL:
 const { collectionIndex, entries } = Astro.props;
 ---
 
 <BaseLayout
   title={collectionIndex.data.title}
-  image={collectionIndex.data.image?.src}
+  image={collectionIndex.data.image}
   description={collectionIndex.data.description}
 >
   <PageHeader title={collectionIndex.data.title} />
-  <section class="section">
-    <div class="container">
-      <div class="row">
+  
+  <section class="section py-12 bg-[#0f172a]">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap -mx-2">
         {
-          entries.map((entry) => {
-            // Lógica para separar Categoría de Curso
-            // Si el archivo es "-index", es una categoría principal (Caja limpia)
-            const isCategory = entry.id.includes("-index");
+          entries.length > 0 ? (
+            entries.map((entry) => {
+              // Si el ID contiene "-index", renderizamos la tarjeta de categoría (DocCard)
+              // Si NO lo contiene, es un curso individual y usamos CourseCard
+              const isCategory = entry.id.includes("-index");
 
-            return (
-              <div class="md:col-6 lg:col-4 h-min p-2">
-                {isCategory ? (
-                  <DocCard entry={entry} />
-                ) : (
-                  <CourseCard entry={entry} />
-                )}
-              </div>
-            );
-          })
+              return (
+                <div class="w-full md:w-1/2 lg:w-1/3 p-2">
+                  {isCategory ? (
+                    <DocCard entry={entry} />
+                  ) : (
+                    <CourseCard entry={entry} />
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <div class="w-full text-center py-20">
+              <p class="text-slate-400 text-lg italic">
+                Aún no hay cursos disponibles en esta categoría.
+              </p>
+            </div>
+          )
         }
       </div>
     </div>
