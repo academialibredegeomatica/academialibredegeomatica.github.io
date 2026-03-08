@@ -4,32 +4,26 @@ if (!entry || !entry.data) return null;
 
 const { title, image, url_destino, botonTexto, tipo, empresa } = entry.data;
 
-// 1. Definimos las rutas
+// Definición de rutas
 const urlInterna = `/docs/${entry.id.replace(/\.md$/, '').replace(/\/index$/, '').replace(/^index$/, '')}`;
-const tieneDestino = url_destino && url_destino.trim().length > 0;
-const enlaceFinal = tieneDestino ? url_destino.trim() : urlInterna;
+const enlaceFinal = (url_destino && url_destino.trim().length > 0) ? url_destino.trim() : urlInterna;
 const esExterno = enlaceFinal.startsWith('http');
 
-// 2. Lógica de visualización
+// Lógica de visualización
 const esCategoria = entry.id.endsWith('index') || entry.id.endsWith('index.md');
 const mostrarTipo = !esCategoria && tipo && tipo.trim().length > 1;
 const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
 ---
 
-<div class="h-full bg-[#1e293b] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-xl transition-all hover:border-blue-500/50 group relative">
+<div class="course-card-container h-full bg-[#1e293b] border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-xl transition-all hover:border-blue-500/50 group relative">
   
   <div class="relative aspect-video bg-slate-800 flex items-center justify-center p-2 overflow-hidden">
     {mostrarTipo && (
-      <div class="absolute top-3 right-3 z-20 bg-emerald-500 text-white text-[10px] font-black px-3 py-1.5 rounded-md shadow-lg tracking-wider uppercase">
+      <div class="absolute top-3 right-3 z-10 bg-emerald-500 text-white text-[10px] font-black px-3 py-1.5 rounded-md shadow-lg tracking-wider uppercase">
         {tipo}
       </div>
     )}
-
-    {image ? (
-      <img src={image} alt={title} class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
-    ) : (
-      <div class="text-slate-600 text-xs italic">Sin imagen</div>
-    )}
+    {image && <img src={image} alt={title} class="w-full h-full object-contain" />}
   </div>
 
   <div class="p-5 flex flex-col flex-grow text-center">
@@ -44,18 +38,46 @@ const mostrarEmpresa = !esCategoria && empresa && empresa.trim().length > 1;
     </h3>
 
     <div class="mt-auto pt-2">
-      <a 
-        href={enlaceFinal} 
-        target={esExterno ? "_blank" : "_self"}
-        rel={esExterno ? "noopener noreferrer" : ""}
-        class="relative z-30 block w-full text-center bg-[#2563eb] hover:bg-blue-400 text-white text-[11px] font-bold py-3.5 rounded-xl uppercase no-underline shadow-lg transition-all active:scale-95"
+      <button 
+        data-url={enlaceFinal}
+        data-externo={esExterno}
+        class="redirect-button relative z-50 block w-full text-center bg-[#2563eb] hover:bg-blue-400 text-white text-[11px] font-bold py-3.5 rounded-xl uppercase shadow-lg transition-all active:scale-95 cursor-pointer"
       >
         {botonTexto || "ACCESO"}
-      </a>
+      </button>
     </div>
   </div>
 
-  {!tieneDestino && (
+  {!url_destino && (
     <a href={urlInterna} class="absolute inset-0 z-10" aria-label={title}></a>
   )}
 </div>
+
+<script>
+  // Este script se encarga de interceptar el clic y forzar la salida
+  function setupButtons() {
+    const buttons = document.querySelectorAll('.redirect-button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        // Detiene CUALQUIER otra acción de la página
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const url = btn.getAttribute('data-url');
+        const esExterno = btn.getAttribute('data-externo') === 'true';
+
+        if (url) {
+          if (esExterno) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+          } else {
+            window.location.href = url;
+          }
+        }
+      });
+    });
+  }
+
+  // Ejecutar al cargar y al navegar (para Astro View Transitions)
+  setupButtons();
+  document.addEventListener('astro:after-swap', setupButtons);
+</script>
