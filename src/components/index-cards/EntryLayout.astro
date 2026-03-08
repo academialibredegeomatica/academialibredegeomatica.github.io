@@ -1,11 +1,7 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
-// Importamos el componente oficial para evitar conflictos
-import { Image } from "astro:assets";
-
 const { entry } = Astro.props;
 
-// Verificación de seguridad: si no hay entrada, no renderizamos nada
 if (!entry || !entry.data) return null;
 
 const { title, image } = entry.data;
@@ -27,7 +23,7 @@ const { Content } = await entry.render();
         </div>
       )}
 
-      <div class="prose prose-invert max-w-none text-slate-300 prose-headings:text-white prose-a:text-blue-400">
+      <div class="prose prose-invert max-w-none text-slate-300">
         <Content />
       </div>
     </div>

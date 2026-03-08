@@ -3,40 +3,28 @@ import { getCollection } from 'astro:content';
 import CollectionLayout from "@components/docs/CollectionLayout.astro";
 import EntryLayout from "@components/docs/EntryLayout.astro";
 
-// 1. GENERACIÓN DE RUTAS (Tu fragmento integrado)
 export async function getStaticPaths() {
   const allEntries = await getCollection('docs');
   
   return allEntries.flatMap(entry => {
-    // Quitamos el .md para tener una ruta limpia
     const cleanId = entry.id.replace(/\.md$/, '');
-    
     return [
-      { params: { id: cleanId }, props: { entry } }, // Ejemplo: /docs/gestion-del-riesgo
-      { params: { id: entry.id }, props: { entry } } // Ejemplo: /docs/gestion-del-riesgo.md
+      { params: { id: cleanId }, props: { entry } },
+      { params: { id: entry.id }, props: { entry } }
     ];
   });
 }
 
-// 2. RECOGIDA DE DATOS
 const { entry } = Astro.props;
-
-// Verificamos si es una carpeta (index) o un archivo individual
 const isGroup = entry.id.endsWith('-index.md') || entry.id.endsWith('-index');
 
 let groupEntries = [];
 if (isGroup) {
   const allDocs = await getCollection('docs');
-  // Obtenemos el nombre de la carpeta madre
   const folderName = entry.id.split('/')[0];
-  
-  // Filtramos los archivos que pertenecen a esa carpeta y no son el index
   groupEntries = allDocs.filter(item => 
     item.id.startsWith(folderName) && !item.id.includes("-index")
   );
-  
-  // Opcional: Ordenar por peso si tienes 'weight' en el markdown
-  groupEntries.sort((a, b) => (a.data.weight ?? 99) - (b.data.weight ?? 99));
 }
 ---
 
