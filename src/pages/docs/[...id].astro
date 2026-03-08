@@ -8,38 +8,24 @@ export async function getStaticPaths() {
   
   return allEntries.flatMap(entry => {
     const isGroup = entry.id.includes("-index");
-    // Limpiamos el ID quitando el -index para la URL
     const baseId = entry.id.replace("/-index", "");
 
-    // Creamos rutas que acepten el ID con y sin .md para evitar el 404 de la terminal
     return [
-      { 
-        params: { id: baseId.replace(".md", "") }, 
-        props: { entry, isGroup } 
-      },
-      { 
-        params: { id: baseId }, 
-        props: { entry, isGroup } 
-      }
+      { params: { id: baseId.replace(".md", "") }, props: { entry, isGroup } },
+      { params: { id: baseId }, props: { entry, isGroup } }
     ];
   });
 }
 
 const { entry, isGroup } = Astro.props;
 
-// Lógica para obtener los cursos que pertenecen a una categoría
 let groupEntries = [];
 if (isGroup) {
   const allDocs = await getCollection('docs');
-  // Obtenemos el nombre de la carpeta (ej: "Gestion del riesgo")
   const folderName = entry.id.split('/')[0];
-  
-  // Filtramos los archivos que están dentro de esa carpeta y que no son el índice
   groupEntries = allDocs.filter(item => 
     item.id.startsWith(folderName) && !item.id.includes("-index")
   );
-
-  // Ordenamos por el peso definido en el Markdown (weight)
   groupEntries.sort((a, b) => (a.data.weight ?? 99) - (b.data.weight ?? 99));
 }
 ---

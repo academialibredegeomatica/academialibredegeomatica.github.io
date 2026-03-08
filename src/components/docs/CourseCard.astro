@@ -3,22 +3,23 @@ const { entry } = Astro.props;
 if (!entry) return null;
 
 const data = entry.data || {};
-
 const title = data.title || "Curso sin título";
 const empresa = data.empresa || "CAEG";
 const tipo = data.tipo || "Curso";
 const botonTexto = data.botonTexto || "ACCESO";
 const image = data.image || "";
 
-// 1. Limpiamos la URL para evitar el error 404 de la terminal
+// Link de YouTube o Formulario (url_destino)
+const urlDestinoManual = data.url_destino;
+
+// Ruta interna automática (limpiando espacios y tildes)
 const urlInterna = `/docs/${entry.id
   .replace(".md", "")
   .replace("/-index", "")
-  .split('/')
-  .map(part => encodeURIComponent(part.trim())) // Maneja espacios y caracteres especiales
-  .join('/')}`;
+  .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  .toLowerCase()}`;
 
-const destinoFinal = data.url_destino || urlInterna;
+const destinoFinal = urlDestinoManual || urlInterna;
 const esExterno = String(destinoFinal).startsWith('http');
 ---
 
@@ -29,7 +30,6 @@ const esExterno = String(destinoFinal).startsWith('http');
       <img 
         src={image} 
         alt={title} 
-        /* Importante: 'alt' soluciona el error de la pantalla roja */
         class="object-contain w-full h-full opacity-100 group-hover:scale-105 transition-transform duration-700"
         loading="lazy"
       />
