@@ -1,13 +1,12 @@
----
-import { getEntry } from 'astro:content';
+echo '---
+import { getEntry } from "astro:content";
 import EntryLayout from "@components/about/EntryLayout.astro";
 
-// Vamos directo al archivo 'index' dentro de la carpeta 'about'
-const entry = await getEntry('about', 'index');
+const entry = await getEntry("about", "index");
 
 if (!entry) {
   throw new Error("No se encontró el archivo src/content/about/index.md");
 }
 ---
 
-<EntryLayout entry={entry} />
+<EntryLayout entry={entry} />' > src/pages/about.astro && git add src/pages/about.astro && git commit -m "Forzando uso de getEntry en about.astro" && git push origin main
