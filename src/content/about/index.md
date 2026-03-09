@@ -1,7 +1,7 @@
 ---
 title: Nosotros
-description: Academía Libre de Geomática - Nuestra Historia
+description: Academia Libre de Geomatica
 draft: false
---- 
+---
 
-Lorem ipsum dolor sit amet...
+Contenido de prueba para limpiar el error.
