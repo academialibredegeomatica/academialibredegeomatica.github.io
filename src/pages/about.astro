@@ -1,15 +1,13 @@
 ---
-import BaseLayout from "@components/base/BaseLayout.astro";
 import { getEntry, render } from "astro:content";
 const entry = await getEntry("about", "index");
 if (!entry) { return Astro.redirect("/404"); }
 const { Content } = await render(entry);
 ---
-<BaseLayout title={entry.data.title}>
-  <section class="py-12 bg-[#0f172a] text-white">
-    <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-6">{entry.data.title}</h1>
-      <div class="prose prose-invert"> <Content /> </div>
-    </div>
-  </section>
-</BaseLayout>
+<html lang="es">
+  <head><title>{entry.data.title}</title></head>
+  <body style="background: #0f172a; color: white; font-family: sans-serif; padding: 2rem;">
+    <h1>{entry.data.title}</h1>
+    <Content />
+  </body>
+</html>
