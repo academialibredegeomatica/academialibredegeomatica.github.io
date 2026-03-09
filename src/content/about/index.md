@@ -1,6 +1,7 @@
 ---
-title: "Nosotros"
-description: "Academia Libre de Geomática"
+title: Nosotros
+description: Academia Libre de Geomatica
+draft: false
 ---
 
-Bienvenido a nuestra academia.
+Contenido de prueba.
