@@ -1,9 +1,13 @@
 ---
-import type { AboutEntry } from "@/types";
+import { getEntry } from 'astro:content';
 import EntryLayout from "@components/about/EntryLayout.astro";
-import { getIndex } from "@lib/contentParser";
 
-const entry = (await getIndex("about")) as AboutEntry;
+// Vamos directo al archivo 'index' dentro de la carpeta 'about'
+const entry = await getEntry('about', 'index');
+
+if (!entry) {
+  throw new Error("No se encontró el archivo src/content/about/index.md");
+}
 ---
 
 <EntryLayout entry={entry} />
