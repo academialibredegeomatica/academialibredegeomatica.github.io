@@ -1,7 +1,7 @@
 ---
 title: "Procesamiento Digital de Imagenes de Aeronaves Pilotadas Remotamente"
-empresa: "Geospatial Industry"
-tipo: "Instituto Geogr;afico Nacional de Perú"
+empresa: "Instituto Geográfico Nacional de Perú"
+tipo: "Curso premium"
 image: "/images/37portada.jpg"
 botonTexto: "ACCESO"
 url_destino: "https://docs.google.com/forms/d/e/1FAIpQLSf8SyIco71F9ePWb4zinFwSL3H2sSMy-BG80ye95xEcSkmqkw/viewform?usp=header"
