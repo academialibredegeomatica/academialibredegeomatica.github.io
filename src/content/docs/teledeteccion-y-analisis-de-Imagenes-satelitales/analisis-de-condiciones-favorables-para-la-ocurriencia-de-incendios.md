@@ -2,7 +2,7 @@
 title: "Análisis de Condiciones Favorables para la Ocurrencia de Incendios"
 empresa: "MASTERGIS"
 tipo: "Curso premium"
-image: "/images/59portada.jpg"
+image: "/images/59portada.png"
 botonTexto: "ACCESO"
 url_destino: "https://docs.google.com/forms/d/e/1FAIpQLSf8SyIco71F9ePWb4zinFwSL3H2sSMy-BG80ye95xEcSkmqkw/viewform?usp=header"
 weight: 6
