@@ -1,6 +1,6 @@
 ---
-// Usamos la ruta absoluta de la plantilla para evitar errores de nivel de carpeta
-import Base from "@/layouts/Base.astro";
+// Usamos la ruta directa desde la raíz del proyecto para saltarnos cualquier error de configuración
+import Base from "../layouts/Base.astro";
 
 const categorias = [
   {
@@ -56,14 +56,10 @@ const categorias = [
             <h2 class="text-3xl font-bold text-white">{cat.titulo}</h2>
           </div>
           <div class="p-10 bg-white/5 rounded-xl border border-white/10 border-dashed text-center">
-             <p class="text-slate-500 italic">Los listados de libros se cargarán mediante archivos JSON próximamente...</p>
+             <p class="text-slate-500 italic">Los listados se cargarán aquí...</p>
           </div>
         </div>
       ))}
     </div>
   </section>
 </Base>
-
-<style>
-  html { scroll-behavior: smooth; }
-</style>
