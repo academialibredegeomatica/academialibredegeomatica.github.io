@@ -5,21 +5,18 @@ import Social from "@components/common/Social.astro";
 <footer class="glass container lg:my-4 lg:rounded-lg intersect:animate-fadeUp !opacity-100">
   <div class="row py-2 lg:py-0 items-center flex-wrap-reverse">
     <div class="text-center lg:col-6 lg:mb-0 lg:text-left">
-      <ul>
-        <li class="m-2 inline-block">
-          <a href="/terms" style="color: #000000 !important;"></a>
-        </li>
-      </ul>
+      <p class="text-white/70 text-sm">
+        © {new Date().getFullYear()} Academia Libre de Geomática
+      </p>
     </div>
     
     <div class="text-center lg:col-6 lg:my-0 flex items-center justify-center lg:justify-end !opacity-100" style="filter: none !important;">
       <div style="color: #ffffff !important;">
         <Social
           links={{
-            facebook: "https://www.facebook.com/",
-            github: "https://www.github.com/",
-            instagram: "https://www.instagram.com/",
-            linkedIn: "https://www.linkedin.com/",
+            facebook: "https://www.facebook.com/tu-pagina",
+            youtube: "https://www.youtube.com/@tu-canal",
+            email: "mailto:tu-correo@ejemplo.com",
           }}
         />
       </div>
