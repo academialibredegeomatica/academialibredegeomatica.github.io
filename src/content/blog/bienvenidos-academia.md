@@ -1,10 +1,11 @@
 ---
 title: ¡Bienvenidos a la Rebelión Geomática!
 description: Lanzamos la Academia con más de 101 cursos y 10 categorías especializadas para la comunidad.
-date: 2026-03-11
+date: 2024-03-11
 categories: [Geomática]
 author: oscar-paolo
 tags: [academia, sig, cursos]
+draft: false
 hideToc: true
 ---
 
