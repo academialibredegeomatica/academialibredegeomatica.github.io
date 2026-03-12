@@ -1,12 +1,12 @@
 ---
-title: "¡Bienvenidos a la Rebelión Geomática!"
-description: "Lanzamos la Academia con más de 101 cursos y 10 categorías especializadas para la comunidad."
-date: 2024-03-11
-categories: ["Philosophy"]
-author: "john-doe"
-tags: ["academia", "sig"]
-draft: false
+title: Bienvenidos a la Rebelion Geomatica
+description: Lanzamos la Academia con mas de 101 cursos y 10 categorias especializadas para la comunidad.
+date: 2024-01-25
+categories: [Philosophy]
+author: john-doe
+tags: [ancient, stoicism]
 hideToc: true
+draft: false
 ---
 
 # ¿Curiosidad por los SIG o la Teledetección? 🛰️
