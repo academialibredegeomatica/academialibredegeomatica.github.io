@@ -1,11 +1,10 @@
 ---
-title: "Bienvenidos a la Academia"
-description: "Explora mas de 101 cursos y 10 categorias de geomatica para aprender gratis."
+title: The Elements of Stoicism
+description: Discover the enduring wisdom of the Stoics.
 date: 2024-01-25
-categories: ["Philosophy"]
-author: "john-doe"
-tags: ["ancient", "stoicism"]
-draft: false
+categories: [Philosophy]
+author: john-doe
+tags: [ancient, stoicism]
 hideToc: true
 ---
 
@@ -17,17 +16,3 @@ Si llegaste hasta aquí, probablemente compartes algo con nosotros: **curiosidad
 
 ### Un espacio para la comunidad
 Esta página nace con una idea muy simple: **intercambiar conocimiento.** Aquí compartimos materiales relacionados con SIG y geomática. No es una tienda; es un espacio comunitario.
-
-### Lo que encontrarás hoy:
-* **Más de 101 cursos** disponibles en descarga directa.
-* **10 categorías especializadas**.
-* **Acceso libre**: Sin registros molestos.
-
-![Categorías de Cursos](/WebCollage.jpg)
-
-### ¡Únete a la conversación!
-- 🌐 [Nuestra Biblioteca Digital](https://academialibredegeomatica.github.io/)
-- 👥 [Comunidad en Facebook](https://www.facebook.com/share/14YV8kbuuQj/)
-- 💬 [Grupo de Telegram](https://t.me/+VPfvkv4ErNk1OGJh)
-
-¡Que los datos espaciales estén siempre de tu lado! 🗺️
