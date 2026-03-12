@@ -1,14 +1,15 @@
 ---
-// ¡La ruta correcta por fin!
 import BaseLayout from "@components/base/BaseLayout.astro";
+// Importamos tu lista de 131 libros
+import librosData from "../data/libros.json"; 
 
 const title = "Biblioteca Digital";
-const description = "Colección de recursos especializados en Geomática, SIG y Teledetección.";
+const description = "Recursos especializados en Geomática, SIG y Teledetección.";
 
 const categorias = [
-  { id: "sig", titulo: "Sistemas de Información Geográfica", color: "border-blue-500", icon: "📍", desc: "Software, análisis espacial y gestión de datos vectoriales." },
-  { id: "tele", titulo: "Teledetección y Fotogrametría", color: "border-green-500", icon: "🛰️", desc: "Procesamiento de imágenes satelitales, drones y LiDAR." },
-  { id: "carto", titulo: "Cartografía y Geodesia", color: "border-yellow-500", icon: "🗺️", desc: "Sistemas de referencia, proyecciones y diseño de mapas." }
+  { id: "sig", titulo: "Sistemas de Información Geográfica", color: "text-blue-400", bg: "bg-blue-400/10", icon: "📍" },
+  { id: "tele", titulo: "Teledetección y Fotogrametría", color: "text-green-400", bg: "bg-green-400/10", icon: "🛰️" },
+  { id: "carto", titulo: "Cartografía y Geodesia", color: "text-yellow-400", bg: "bg-yellow-400/10", icon: "🗺️" }
 ];
 ---
 
@@ -16,39 +17,41 @@ const categorias = [
   <section class="py-16 bg-[#0f172a] min-h-screen">
     <div class="container mx-auto px-4 max-w-5xl">
       
-      <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight border-b border-blue-500 pb-8 inline-block">
-          {title}
-        </h1>
-        <p class="text-slate-300 text-lg max-w-2xl mx-auto">
-          Explora nuestra colección de recursos organizados por especialidad.
-        </p>
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h1>
+        <p class="text-slate-400">Total: {librosData.length} recursos disponibles</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 mb-24">
-        {categorias.map((cat) => (
-          <a href={`#${cat.id}`} class={`p-8 rounded-2xl border border-white/10 hover:${cat.color} bg-white/5 backdrop-blur-sm text-center transition-all hover:scale-105 hover:bg-white/10 group`}>
-            <div class="text-6xl mb-6 group-hover:scale-110 transition-transform">{cat.icon}</div>
-            <h3 class="text-2xl font-bold text-white mb-3">{cat.titulo}</h3>
-            <p class="text-slate-400 text-sm">{cat.desc}</p>
-          </a>
-        ))}
-      </div>
-
-      <div class="space-y-16">
-        {categorias.map((cat) => (
-          <div id={cat.id} class="scroll-mt-24">
-            <div class="flex items-center mb-6 border-b border-white/10 pb-4">
-              <span class="text-3xl mr-4">{cat.icon}</span>
-              <h2 class="text-2xl md:text-3xl font-bold text-white">{cat.titulo}</h2>
-            </div>
-            <div class="p-10 bg-white/5 rounded-xl border border-white/10 border-dashed text-center">
-               <p class="text-slate-400 italic">Aquí insertaremos la base de datos de los 1,000 libros...</p>
-            </div>
+      {categorias.map((cat) => (
+        <div id={cat.id} class="mb-16 scroll-mt-24">
+          <div class={`flex items-center gap-4 p-4 rounded-xl ${cat.bg} mb-6 border border-white/5`}>
+            <span class="text-3xl">{cat.icon}</span>
+            <h2 class={`text-2xl font-bold ${cat.color}`}>{cat.titulo}</h2>
           </div>
-        ))}
-      </div>
 
+          <div class="grid gap-2">
+            {librosData
+              .filter(libro => libro.Categoria === cat.id)
+              .map((libro) => (
+                <div class="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all group">
+                  <div class="flex items-center gap-3 overflow-hidden">
+                    <span class="text-slate-500 group-hover:text-blue-400 flex-shrink-0">📚</span>
+                    <span class="text-slate-200 text-sm md:text-base truncate" title={libro.Titulo}>
+                      {libro.Titulo.replace(/_/g, ' ')}
+                    </span>
+                  </div>
+                  <a 
+                    href={libro.Link_Drive} 
+                    target="_blank" 
+                    class="flex-shrink-0 ml-4 text-xs bg-slate-700 hover:bg-blue-600 text-white py-1.5 px-4 rounded-md transition-colors"
+                  >
+                    Descargar
+                  </a>
+                </div>
+              ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 </BaseLayout>

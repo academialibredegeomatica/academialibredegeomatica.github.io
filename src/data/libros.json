@@ -1,0 +1,652 @@
+[
+  {
+    "Titulo": "_A_Beginners_Guide_To_R.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1BF2zOetf7sSWM3TWk6FuPM8XCFVCIFbm",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "GestionAmbiental_ArcGis.rar",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1SWKLKqf2QKAtXXDqMUKHB4mw_Nc0At5g",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "Catastro.rar",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1fyywdC63BzATJnY5kTPYYN5qiGnvJMSe",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "ArcGIS_Manuales.rar",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1_GQc0B9w6KDLn_tq_dq2P8IpOTAm0OUa",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_TODO GEOLOGIA.rar",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1rHdg335gVj8ZX_OtPdr0XhBZnHu9Dcoy",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Mapeo_de_la_Biomasa_aerea_de_los_bosques_con_R.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1nyryk9C7MDfe81ze06D5Q5X0WhbF9n_D",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Marco_de_Sendai_para_la_Reducción_del_Riesgo.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=19VNwZg-AfHx0uY7s_QV8--fF447Ybj1f",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Disaster_risk_reduction_and_climate_change.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1hI4_y2cWuiav1ZIEudT6dL3TZBubmufK",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_La_gestion_del_riesgo_de_desastres.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1FnUo22GQV6yMulxFmfAAhIQhOpmKM0kP",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Viviendo_en_riesgo.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1BNePzvb--YqnBR_VO8zP813fn4JnkWtD",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Introduccion_a_los_sig_con_qgis.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1YnM-cMcPH8ziVo3BT3_iUVTLm1GJOCc6",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Sistema_de_informacion_geografica1.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1FLGbAOOJTD8lx9ZrwJ98Jd-5oz93KOeP",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Tecnologia_de_la_informacion_geografica_en_el_analisis_espacial.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1wWbONOJx8pFu1PXYRkKR1AuEIuGxqhHe",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Sistema_de_Informacion_Geografica2.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1yxi1u-K-v0wZBSf1LaZd6FKPJzZVC-w5",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Sistema_de_informacion_goegrafica3.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1XLhpiSmnV5xGj_p890y5a0UQfkbDeC2M",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Muticriteria_Decision_Analysis_in_Geographic_Information_Science.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1o1H72MBH9wMcxSM5RwGp5CDjJ_cAdj85",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Python_Scripting_for_ArcGIS Pro.epub",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=18ORUEbNTtsejaWSQr0xL0mEG8rt1L587",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Sistemas_de_Informacion_Geografica.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1I3QtwdA8Zv9CS1GIBFDDd60V_VR7HC4G",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_PostGIS_Cookbook.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1VZbeEOnWm7SAZRdCJpNlk54sAOioSzC3",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Mastering_postgis.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1YuMFFEO-pfbcPACU1RTReeVpySLO8ZEu",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Geoinformatica_Epidemiologia_y_Biodiversidad.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1lDNPeA3AV_hlnE-xy47XkX9oTM1ohdBA",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Mobil_Map_Syetem.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1uxTbe6vFq015j_WDuaT77XZ-CNIycrV0",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Introductory_Time_Series_With_R.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=11BfuC5W4hWxHnB3dIXAceAkTiUc0oynR",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Petroleum_Geoscience.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1-DZC28yFelTaoKST0DiudsM17PAKzB6X",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_SPSS_For_Starters_And_2nd_Levelers.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1ik0tvScgNeXYhXg6VzvdCIe1zU1qXUVU",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_ArcGIS_For_Environmental_And_Water.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1RER--i_AxQAaYRwl2y7bvaetm_cvNl84",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Quantitative_Methods_For_The_Social.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1bIADHA3I-LRlcZj1ihatSJYHofophHe1",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Empleo_de_SIG_en_Planifacion_Territorial.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1gzi7BUoZKd0dpZqje86aDeYOE1jOUAYW",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Norma_tecnica_v14_noviembre_2016_1_.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1_M0BglqqZLbw5d81DzWn0-PC6MVO7IJ2",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Teoria_y_metodos_de_la_Geografia_Cuantitativa.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1MG3urp9EMg8V7I6JxlL5wrZQJhZxCJ53",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Learning_QGIS.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1zCBCjNwvrbM_5_qkzsVLkgr_Q9Of-aD6",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Geofrafia_Geotecnologia_y_Analisis_Espacial.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1HQla9c-TxY2f0ysKoluIbnJOqCER-Hew",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_El_Mundo_De_Los_Mapas.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1cbmM42or4doRlGy4ZXOM465XV2KgdY1v",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Geoinformatica_aplicada_a_procesos_geoambientales.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1hDCqARybSiIfXuOAH08EpMvv1XFVETrc",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Memoria_del_mapa_de_cobertura.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1aEolvx1r0pzf3oP3kTECihE77C6WEhVn",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Analisis_estadistico_de_datos_espaciales_con_QGIS_y_R.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Nm-4pJ9BgbBN_YvASCn9lVIA52jGgg8y",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Climate_Revolution_Drones_photogrammetry_and_crisis.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1A-IMtEq1_j7h5RRF6XivpUQ7r4oZVIeb",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Introduccion_a_Arcgis_runtime_for_android.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1CgSOeixoQsL4jfFcO_UNTweBxAl8ftkN",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Modelos_digitales_del_terreno.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1iB-xsVDn46O_oqzYybJVPokBe60Yddch",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Getting_to_Know_ArcGIS_Pro.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1PmcOPcUtonhPQYNSQI0eZKdpCKW0non4",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Leaflet.js_Essentials.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=12MVxO7iYC7lnQlgOz5ZF86QxhlUD0a6b",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_ArcPy_and_ArcGIS.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Eor6FqRaBdAY_R1QiylCukWiaz4XnL_T",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_QGIS_Python_Programming_Cookbook.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1x8DELYYlqXbdf8BApBr4FPxjBHB7BodB",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Python_For_ArcGIS.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1R2PNHoWP2fGro0M5EcBGrfwmmP_H-0D9",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Programming_ArcGIS_with_Python_Cookbook.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1T_wteguUw5HMfuyCtYRcd4IoxXw2HmFK",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Geomedicina.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=139ZPL1QA-6XajH_-hXT_WJGLSYUDz0uy",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_INTELIGENCIA_DE_UBICACIÓN_con_SIG.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=11chirDAOZp3oAijjL0AczgHnwC1i3Loe",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_FUENTES_DESCARGA_DEM.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=162pZ5ZqJ6DaoW4Zg8fbp7saDl8OHMywX",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Mapping_multiscale_vascular_plant_richnes.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Bb4XCKaCOFvjP7fTTU3SE2tYj6Q4Qh2V",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Diccionario_de_terminos_sig.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1AuLcm4_bcfANqBXTbK_aps6QEUaaoE17",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Guia_metodologico_SIG.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1JpMxMF0WXv8P-kw4cYChyrC_tRgmi-s8",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Guía_metodológica_para_elaboración_de_cartografias_de_riesgos.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1AxthwRFZnLHkJ-Dq1fqGx_kvI_zjgokO",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_PostGIS_in_Action.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1CDUQav2c65AXmlgouD_0FM2iFcJcUNH2",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Analisis_espacial_con_R.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1jWOXgQKlholsWOPXV2oX6rrarWP1KL5p",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_GeoServer_Beginner's Guide.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1JYbJEZLBMNGhmCH2mA7OVSqHtFz3o8FN",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Sistemas_de_Informacion_Geografica_tomo1.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Pgf9Qyy74A85jag6sgsKgFLopNaNkGlK",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Sistema_de_Localizacion_Informacion_Geografica.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1PewkwU1seg6gJAC71CfN2jZ4N3O1BHbz",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Los_SIG_y_la_Investigacion_en_Ciencias_Humanas_y_Sociales.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1qD-nGcAkDsHnwMvvQshIyXTzVnZePvTX",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Ensenanza_urbanismo_civiles_SIG.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1d2COC01vFBX20pwgJoffKeensBjT_v2x",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Atmospheric_and_radiometric_correction_algorithms.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=14Piz8w6aA4TkGL4hpBfnRZ2oQn1jrJ8-",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Guia_Tecnica_de_Modelamiento_SIG_para_ZEE.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1HXwIXQekjSfeO1-9giLsogPb77R8x2ua",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_The_Arc_Book_GIS.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1o5lFfW3t1E79rL7fxraTkWqUyyBfFNBw",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Fundamentos_SIG.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1LCUhIEsg1BpDai7DiG4ik_AXeFH_MTND",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Aprendiendo_SIG_con_JuegodeThrono.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1XIeQr4VQOVrdxZjaIIiviomljl5RwQKz",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Manual_Arcgis_Basico.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=19WQhszxWMIiKEuiXAUBAAQ2vDmPpLABx",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "_Analisis_multitemporal_vectorial_arcgis.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=19zuadd_oOhVFwQTwLunpABGXEKqhg_yJ",
+    "Categoria": "sig"
+  },
+  {
+    "Titulo": "Otras_cartografias.rar",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1CnOei04Z_yPvDcgIoxWFcek7dZ1mCOBf",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Sociedad_magica_guia_cartografia.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1KrfebW34S62qtW1n5gZN-3WT8m4hhgsC",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Cartografia_tematica_rio_bermejo.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1tRuGz-OHIKsBiDI0JXIR7ESzJ81GBO3Z",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Metodologia_para_el_analisis_interpretacion_mapas.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Xs535Pcg4JvoWMVeW_xGVyzWWgI4whLU",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_GeoMorfologia_Aplicada_Cartografia.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1TKeH322lQ-4_4r8jXvOev8aD4lLbE6_9",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Elementos_esenciales_opcionales_Cartografía_temática.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1yx1tqEpc_mYjvqCMYAhl6W1--s5SIoF0",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Guia_Cartografia_topografia.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1tb_9vUm-1IKiZdX_iwp8DI7iY-CVB8cK",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_La_cartografia_y_proyecciones_cartograficas.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Tu0kJ-6XvBar7hjP-7bHrpx4bMOEenZi",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Conceptos_Cartografia.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1D3cTzLwlD-aY8WrQQiYP-JfSyAbNkwRj",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Mapas_y_cartografos_en_la_Guerra_Civil.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1A-ZxkHYHYr5cs8hTvwcoHafq6rgAwel4",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Mapas_Invisibles.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1fWTkabk_I7IiEfVqzF3CW4UJYtH1X6L8",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_MANUAL_Cartografia_basica.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1m3Xk6amkwMyG20pnEswmtOi-ArUMdDDC",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Metologia_Cartografia_Tematica.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1INZlmWtL50IyMphm8U64JBivaJRJjQpx",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "_Cartografia_basica.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1MwG3u3C4aIo6obx5q00ScLm_u-Tk_cNg",
+    "Categoria": "carto"
+  },
+  {
+    "Titulo": "Teledeteccion_Curso.rar",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1dltKOIIGLhSLppvKCiT2z4zToWVswtvD",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Teledeteccion_Ambiental_Emilio_Chuvieco.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1qYmzGvLFtJzjwUWMkeSPgjFcBSPR6Znt",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Aprendiendo_a_manejar_los_SIG_en_la_gestion_ambiental.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1rY76xznvdGuGG_cP3G_rLBZTSL3SNxqS",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Fundamentos_de_Teledeteccion_espacial.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1PJzhdxvPYNEwA549ZSm3LtpW5Ct22vHh",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Monitoreo_espacial_Lago Titicaca.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1ZTducNiU-4X12LYvtpXVwB_ZSq4g0l2C",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Google_Earth_Engine_Applications.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1yBDIHYyYdFY9MuxN3RmM1gyhS85feON1",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_MANUAL_PARA_MOSAICO_DE_IMAGENES.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1wkJ2CV4DHwB75VEJafSIo3Pb7f71JGsk",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Teledetección_Espacial.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1HyXtIYaYons27rkuvJyUxuWbshCqGp8m",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_4Teledeteccion_Metodos_Clasificaciones.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1wi5OPQhH6WHj5jL8CBeq-JHR4f8okJku",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_3Teledeteccion_Correccion_Radiometricas.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1XkEaBz3UyGLinl2pHJpRJ8nHF3iHuGL4",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_2Teledeteccion_Caracterisiticas_espectrales.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1SqNinWRtnE4_0zfXWCo7DhLlNoURs7is",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Combining_spectral_and_spatial_information_to_map.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Xci9j5b0CAAmAFzzIhSaXNKCiJlez0Xd",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_1Teledeteccion_Fundamentos1.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1v_NzUP_wVAtGRF14HjrUN4ivNBP3Jrc7",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Spectral_unmixing_of_Landsat_Thematic_Mapper_data.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1tsU83RqQxiwkmLy74w75mgjpXHFMcijL",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Spectral_unmixing_of_vegetation_soil_and_dry_carbon_cover.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1yhRBHPlEUblRlNslHE7wuPTPtfPgSG4U",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Linear_mixture_model_classication_of_burned_forests.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1IN6862PZb8aF6TzNnIFLsbAArH4N4erI",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Hyperion_IKONOS_ALL_and_ETM_sensors.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1a5Q3OmPJ9xEGHjblpcmuU2kbEbA32lJC",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Teledeteccion_ambiental.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Pcgaatb4_05JmAzrRk2m9n0aMARYOSSn",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Metodologia_deteccion_cuerpos_agua.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1NbqV98kxkk-r3R6tCkvkF0MtWCNJpK7J",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_GIS_Applications_in_Agriculture.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Po_DiHLI2fz8Yu_Z_ny8zzA-Nd6_8aWE",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "__GSD_cartografia_mediante_drone.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1gkrUcxHWq5cGprOqtX77RHk2YcT-5-Uj",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Monitoreo_Espacial_de_Desastres_con_imágenes_de_satélite.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1pfKHcQD-SIS0X-4rzrNuwtH70OjSvA8H",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Mapping_Hazardous_Terrain_using_Remote_Sensing.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=15gRaprFZP0GZsNJCfnKNKDhfu9TjwPav",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Satelites_de_teledetección_para_la_gestion_del_territorio.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1WTIiaRf4grfnIhc8_n9BIKDgzoMvVSCX",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Quantitative_Remote_Sensing_of_Land_Surfaces.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1ONgNKtmeQbDziHBRncTtxtA5dEi9nCxb",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Quantitative_Modeling_of_Earth_Surface_Processes.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1sWJCn5hBL3J9erWF4lFvQNrcK1HKFpVU",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Remote_Sensing_&_GIS_for_Land_Cover_Land.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1ILuyl9MHAlHfwSOrNoWsaJiowcMXOImE",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Metodología_para_clasificación_de_coberturas_a_partir_del_procesamiento_de_imágenes_satelitales.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Sq4EihW0uACgz2Sl8NfVHiNYSioMp6pm",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Teledeteccion_por_Radar.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1GDRBuuQHbx9hqbXWf5O4ThVx_puVTvIY",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Remote_Sensing_Geology_Ravi_Prakash_Gupta.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=15C1ukBA3LmdkkI3r1c6xChv8qd5KrJF1",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "__La_Planificacion_del_Vuelo.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1p74Yy38crukwx80t3rq759goRDewutwb",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Teledeteccion_Nuevas_plataformas_y_sensores.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1V5D8373t-I2i8UoakOtFzN5_AFLyTA9W",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Metodologias_para_clasificacion_de_coberturas.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1XYtRKXSwv68KNhOZsbCGg405lJ8PYawk",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "PROCESAMIENTO_CIENTÍFICO_ECUATORIANO_DE_DATOS GPS.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1sHnT2LNGgc4VVD6OgwHgj_tK-Jqc6DQq",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "__Manual_Laboratorio_fotogrametria_fotointerpretacion.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=16A6AyBK9CEQaz4xcPiEDqNp4YITP-Nic",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_FOTOINTERPRETACIÓN_USOS_DEL SUELO.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=11prOT__UWHh8Yj5FtXtcSrnRZ1zIBJtw",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_MANUAL_PRACTICO_DE_FOTOINTERPRETACION.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1oT_mk__FtEcytquCRWsJXMh4a1PK6Mbl",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "__Metodologia_generacion_mapas_tridimensionales_fotogrametria.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1REkLOrbz_VzSJkQzMqnL0JKokf-FRekx",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "__APLICACIÓN_FOTOGRAMETRÍA_AÉREA_topografia.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=19iCUNEqaNpaMFMT0iPdyjReEtYX7ZM-3",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "__Procesamiento_geoinformatico_drones_infraestructura_transporte.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1JkK-t3cUB6bnJx-DzS645iVG6-YxMDWt",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "__Drones_en_cartografia_Automatica.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1Ysln-1_e8-jFScCZKa_fV_RwD1VFVEJJ",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Imagenes_alta_resolucion.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=10wvIwbU-V889JaEZIrxRLDmEg1DXPtu4",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Guia_Clasificacion_Imagenes_satelitales.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1A03NKfbC9gM1hFIK9a1mmNJ_tCv-XV5z",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Rampa_colores_Plugin_SVG2ColoR.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1dOUZYwqjnkx7bB70ntcU7PFJmb2cvCvt",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_CBERS_catalogo_peru.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=13HhQomZDNOrhYRaW6M1CDzCA7ZW9DnBt",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Teoria_TELEDETECCION_ESPACIAL.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=11rL1kn8-1X2bFU4wacNaAwH73NnFtvbt",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Teledeteccion_Congreso_AET_actas.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1BZpgSmlC5spNuKlPd1mroEgDsNsru5cS",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Guia_teledeteccion_medio_ambiente2.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=14MfO39pWidHei9HYIA1rPLyz0UADRPFT",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Protocolo_ortorectificacion_imagenes_Landsat.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1skZgtAjC9JJSV0Tf6iEH3aBa_-gQ8SPa",
+    "Categoria": "tele"
+  },
+  {
+    "Titulo": "_Guia_teledeteccion_medio_ambiente.pdf",
+    "Link_Drive": "https://drive.google.com/uc?export=download&id=1-wl5FO4okJq2yLjhkjCo3-W-3KuNpdkY",
+    "Categoria": "tele"
+  }
+]
